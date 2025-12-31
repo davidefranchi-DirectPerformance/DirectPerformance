@@ -1,0 +1,618 @@
+<!DOCTYPE 
+html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Academy 2026 - Direct Performance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #1A1A1A;
+            --accent-color: #00A8E8;
+            --text-color: #333333;
+            --light-bg: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2d2d2d 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .event-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            font-size: 1rem;
+        }
+
+        .event-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .event-info-item span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Two Column Layout */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        /* Program Section */
+        .program-section {
+            padding-right: 20px;
+        }
+
+        .program-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+
+        /* Accordion */
+        .accordion-item {
+            margin-bottom: 20px;
+            border: 2px solid #E5E5E5;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: var(--primary-color);
+        }
+
+        .accordion-header {
+            background-color: var(--light-bg);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #f0f0f0;
+        }
+
+        .accordion-header h3 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            flex: 1;
+            margin: 0;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background-color: var(--white);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 600px;
+        }
+
+        .accordion-body {
+            padding: 25px;
+            line-height: 1.8;
+        }
+
+        .accordion-body p {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .accordion-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .accordion-body li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .accordion-body li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Registration Form */
+        .registration-section {
+            position: sticky;
+            top: 20px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 2px solid var(--light-bg);
+        }
+
+        .registration-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .registration-section .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #E5E5E5;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--light-bg);
+            padding: 60px 20px;
+            margin: 60px 0;
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Target Section */
+        .target-section {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #0077b6 100%);
+            color: var(--white);
+        }
+
+        .target-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .target-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .registration-section {
+                position: relative;
+                top: 0;
+                order: -1;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .event-info {
+                gap: 20px;
+                font-size: 0.9rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding: 40px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .registration-section {
+                padding: 25px;
+            }
+
+            .accordion-header h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>SEO Academy 2026</h1>
+        <p class="subtitle">Ottimizzazione nell'Era dell'AI</p>
+        <div class="event-info">
+            <div class="event-info-item">
+                <span>📅</span> [Data da definire]
+            </div>
+            <div class="event-info-item">
+                <span>🕐</span> 9:00 - 13:00
+            </div>
+            <div class="event-info-item">
+                <span>📍</span> Milano (Live + Streaming)
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Program Section -->
+            <div class="program-section">
+                <h2>Programma dell'Academy</h2>
+
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>1. GEO - Generative Engine Optimization: Farsi Trovare nelle Risposte AI</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Le ricerche degli utenti si concludono sempre più spesso con risposte AI dirette, senza click verso i siti web. La GEO risponde a questa evoluzione: ottimizzare contenuti e strutture per essere selezionati e citati dai modelli linguistici come fonte autorevole.</p>
+                            <p><strong>Focus operativi:</strong></p>
+                            <ul>
+                                <li>Identificare quali query del vostro settore generano risposte AI (e intercettarle prima dei competitor)</li>
+                                <li>Strutturare schede prodotto e pagine categoria per essere citabili da ChatGPT, Gemini e Perplexity</li>
+                                <li>Trasformare FAQ e guide in contenuti che l'AI riconosce come fonti autorevoli</li>
+                                <li>Misurare la visibilità del vostro brand nelle risposte generate: nuove metriche oltre il ranking tradizionale</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>2. Digital PR e Brand Authority: Dalla Visibilità alla Vendibilità</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Nell'ecosistema AI-driven, chi viene citato vende. I modelli linguistici privilegiano brand menzionati su fonti autorevoli, con prove verificabili e presenza costante nel settore.</p>
+                            <p><strong>Focus operativi:</strong></p>
+                            <ul>
+                                <li>Ottenere menzioni su testate verticali che l'AI considera autorevoli nel vostro mercato</li>
+                                <li>Creare dati proprietari (ricerche, trend report) che media e AI citano come fonte</li>
+                                <li>Trasformare case study e risultati clienti in contenuti linkabili da publisher di settore</li>
+                                <li>Costruire partnership strategiche che generano link, credibilità e conversioni</li>
+                                <li>ROI concreto: da quanto traffico Google a quanto fatturato da menzioni autorevoli</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>3. Magellano AI: Automazione Scalabile per Ecommerce e Siti Complessi</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Ottimizzare manualmente migliaia di prodotti è impossibile. Magellano AI, il nostro tool proprietario, permette di implementare ottimizzazioni SEO massive mantenendo personalizzazione e qualità su scala industriale.</p>
+                            <p><strong>Focus operativi:</strong></p>
+                            <ul>
+                                <li>Generare automaticamente metadati unici e ottimizzati per migliaia di SKU</li>
+                                <li>Implementare dati strutturati su tutto il catalogo in ore, non mesi</li>
+                                <li>Ottimizzare alt text di prodotti basandosi su attributi, categorie e ricerche degli utenti</li>
+                                <li>Intercettare e correggere automaticamente criticità SEO tecniche prima che impattino le vendite</li>
+                                <li>Case study: come abbiamo ottimizzato 15.000 prodotti in 2 settimane con risultati misurabili</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>4. Caso Concreto: Come Stiamo Posizionando un Cliente nell'Era GEO</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Chiusura dell'Academy con un progetto reale in corso: strategia implementata, sfide affrontate, primi risultati ottenuti e prossimi step. Panoramica pratica su GEO, Digital PR e automazioni AI applicate a un business concreto.</p>
+                            <p><strong>Focus operativi:</strong></p>
+                            <ul>
+                                <li>Dall'audit iniziale alla roadmap: come abbiamo individuato le opportunità GEO</li>
+                                <li>Quali contenuti abbiamo ristrutturato e perché</li>
+                                <li>Risultati early-stage: menzioni AI, traffico qualificato, impatto su conversioni</li>
+                                <li>Learnings replicabili per il vostro business</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="registration-section">
+                <h2>Registrati all'Academy</h2>
+                <p class="subtitle">Compila il form per partecipare all'evento</p>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="name">Nome e Cognome *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Azienda *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefono *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Prenota il tuo posto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Target Section -->
+    <div class="target-section">
+        <h2>A chi è dedicata l'Academy</h2>
+        <p>Questa Academy è pensata principalmente per professionisti del settore <strong>Fashion & Apparel</strong>, ma è aperta a tutti i decision maker e responsabili marketing che vogliono comprendere come l'AI sta trasformando il SEO e la visibilità digitale dei brand.</p>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="benefits">
+        <h2>Cosa Include la Partecipazione</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">☕</div>
+                <h3>Welcome Breakfast</h3>
+                <p>Networking e colazione di benvenuto per iniziare la giornata</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎓</div>
+                <h3>Sessioni Formative</h3>
+                <p>4 ore di contenuti esclusivi con i nostri esperti SEO e AI</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🍽️</div>
+                <h3>Light Lunch</h3>
+                <p>Pranzo leggero e momenti di networking con i partecipanti</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💻</div>
+                <h3>Live + Streaming</h3>
+                <p>Partecipa in presenza a Milano o segui l'evento in streaming</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📊</div>
+                <h3>Materiali Esclusivi</h3>
+                <p>Slide, checklist e tool per applicare subito quanto appreso</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🤝</div>
+                <h3>Q&A Dedicata</h3>
+                <p>Spazio per domande specifiche sul tuo business</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>Direct Performance</strong> - Part of Triboo Group</p>
+        <p>Per informazioni: <a href="mailto:academy@directperformance.it">academy@directperformance.it</a></p>
+        <p><a href="https://www.directperformance.it">www.directperformance.it</a></p>
+    </div>
+
+    <script>
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(accItem => {
+                    accItem.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                company: document.getElementById('company').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+            
+            // Here you would normally send the data to your backend
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            alert('Grazie per la registrazione! Riceverai una email di conferma a breve.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
