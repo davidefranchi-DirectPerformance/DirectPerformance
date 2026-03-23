@@ -1,832 +1,604 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Academy 2026 - Direct Performance</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-gradient-start: #00C9B7;
-            --primary-gradient-end: #0077B6;
-            --secondary-color: #1A1A1A;
-            --accent-color: #00D9C9;
-            --text-color: #333333;
-            --light-bg: #F8F9FA;
-            --white: #FFFFFF;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
-            color: var(--white);
-            padding: 80px 20px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        .header .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 35px;
-            font-weight: 300;
-            opacity: 0.95;
-        }
-
-        .event-info {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-
-        .event-info-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .event-info-item span {
-            font-size: 1.3rem;
-        }
-
-        /* Hero Image Placeholder */
-        .hero-image {
-            background: linear-gradient(135deg, rgba(0,201,183,0.1) 0%, rgba(0,119,182,0.1) 100%);
-            height: 300px;
-            margin: -40px 0 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 3px solid var(--accent-color);
-            position: relative;
-        }
-
-        .hero-image-placeholder {
-            text-align: center;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .hero-image-placeholder .format {
-            font-size: 0.9rem;
-            color: #999;
-            margin-top: 10px;
-            font-weight: 400;
-        }
-
-        /* Benefits Strip - Subito sotto header */
-        .benefits-strip {
-            background: linear-gradient(90deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
-            padding: 30px 20px;
-            margin: 0;
-        }
-
-        .benefits-strip h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: var(--white);
-            font-weight: 700;
-        }
-
-        .benefits-grid-strip {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .benefit-card-strip {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 20px 15px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-card-strip:hover {
-            transform: translateY(-5px);
-        }
-
-        .benefit-icon-strip {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .benefit-card-strip h3 {
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-            color: var(--secondary-color);
-            font-weight: 700;
-        }
-
-        .benefit-card-strip p {
-            color: #666;
-            font-size: 0.8rem;
-            font-weight: 400;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Two Column Layout - FORM A SINISTRA */
-        .content-wrapper {
-            display: grid;
-            grid-template-columns: 450px 1fr;
-            gap: 60px;
-            margin: 60px 0;
-        }
-
-        /* Registration Form - A SINISTRA */
-        .registration-section {
-            position: sticky;
-            top: 20px;
-            background: linear-gradient(135deg, rgba(0,201,183,0.05) 0%, rgba(0,119,182,0.05) 100%);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 15px 50px rgba(0,201,183,0.15);
-            border: 2px solid rgba(0,201,183,0.3);
-            height: fit-content;
-        }
-
-        .registration-section h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-            font-weight: 800;
-        }
-
-        .registration-section .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-            font-weight: 400;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid rgba(0,201,183,0.3);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(0,201,183,0.1);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,201,183,0.4);
-        }
-
-        /* Program Section - A DESTRA */
-        .program-section {
-            padding-left: 20px;
-        }
-
-        .program-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--secondary-color);
-            font-weight: 800;
-        }
-
-        /* Image Placeholder Sections */
-        .section-image {
-            background: linear-gradient(135deg, rgba(0,201,183,0.08) 0%, rgba(0,119,182,0.08) 100%);
-            border-radius: 12px;
-            margin-bottom: 30px;
-            padding: 60px 20px;
-            text-align: center;
-            border: 2px dashed rgba(0,201,183,0.3);
-        }
-
-        .section-image-placeholder {
-            color: #666;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .section-image-placeholder .format {
-            font-size: 0.9rem;
-            color: #999;
-            margin-top: 8px;
-            font-weight: 400;
-        }
-
-        /* Accordion */
-        .accordion-item {
-            margin-bottom: 25px;
-            border: 2px solid rgba(0,201,183,0.2);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .accordion-item:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 5px 20px rgba(0,201,183,0.15);
-        }
-
-        .accordion-header {
-            background: linear-gradient(135deg, rgba(0,201,183,0.05) 0%, rgba(0,119,182,0.05) 100%);
-            padding: 25px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .accordion-header:hover {
-            background: linear-gradient(135deg, rgba(0,201,183,0.1) 0%, rgba(0,119,182,0.1) 100%);
-        }
-
-        .accordion-header h3 {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            flex: 1;
-            margin: 0;
-            font-weight: 700;
-        }
-
-        .accordion-icon {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            transition: transform 0.3s ease;
-            font-weight: bold;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(45deg);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background-color: var(--white);
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 800px;
-        }
-
-        .accordion-body {
-            padding: 30px;
-            line-height: 1.9;
-        }
-
-        .accordion-body p {
-            margin-bottom: 15px;
-            color: var(--text-color);
-            font-weight: 400;
-        }
-
-        .accordion-body ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .accordion-body li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            font-weight: 400;
-        }
-
-        .accordion-body li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Target Section */
-        .target-section {
-            padding: 60px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
-            color: var(--white);
-            margin: 60px 0 0 0;
-        }
-
-        .target-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-
-        .target-section p {
-            font-size: 1.2rem;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.9;
-            font-weight: 400;
-        }
-
-        /* Venue Section with Image */
-        .venue-section {
-            padding: 80px 20px;
-            background-color: var(--light-bg);
-        }
-
-        .venue-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .venue-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            color: var(--secondary-color);
-            font-weight: 800;
-        }
-
-        .venue-text p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .venue-image-placeholder {
-            background: linear-gradient(135deg, rgba(0,201,183,0.1) 0%, rgba(0,119,182,0.1) 100%);
-            border-radius: 16px;
-            padding: 100px 20px;
-            text-align: center;
-            border: 2px dashed rgba(0,201,183,0.4);
-        }
-
-        .venue-image-placeholder .text {
-            color: #666;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .venue-image-placeholder .format {
-            font-size: 0.9rem;
-            color: #999;
-            margin-top: 10px;
-            font-weight: 400;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .footer p {
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
-        .footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 1200px) {
-            .content-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .registration-section {
-                position: relative;
-                top: 0;
-                order: -1;
-            }
-
-            .benefits-grid-strip {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .venue-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2rem;
-            }
-
-            .header .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .event-info {
-                gap: 20px;
-                font-size: 0.9rem;
-            }
-
-            .benefits-grid-strip {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .accordion-header h3 {
-                font-size: 1rem;
-            }
-
-            .program-section h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 40px 15px 30px;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .registration-section {
-                padding: 25px;
-            }
-
-            .benefits-grid-strip {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magellano.ai — Naviga i dati. Semplifica le decisioni.</title>
+  <meta name="description" content="Magellano è la piattaforma AI di marketing proprietaria di Direct Performance. Strumenti intelligenti per lead generation, advertising e crescita organica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="header-content">
-            <h1>SEO Academy 2026</h1>
-            <p class="subtitle">Ottimizzazione nell'Era dell'AI per Manager, Imprenditori ed Ecommerce Owner</p>
-            <div class="event-info">
-                <div class="event-info-item">
-                    <span>📅</span> [Data da definire]
-                </div>
-                <div class="event-info-item">
-                    <span>🕐</span> 9:00 - 13:00
-                </div>
-                <div class="event-info-item">
-                    <span>📍</span> Milano (Live + Streaming)
-                </div>
-            </div>
+
+<!-- ============ NAVBAR ============ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 28 Q10 8 18 18 Q26 28 32 8" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <circle cx="32" cy="8" r="2.5" fill="#06c7b2"/>
+      </svg>
+      <span class="logo-text">Magellano<span class="logo-dot">.ai</span></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#cosa-e">La piattaforma</a>
+      <a href="#core-tool">Core Tool</a>
+      <a href="#aree">Aree</a>
+      <a href="#settori">Settori</a>
+      <a href="#case">Case</a>
+      <a href="#contatti" class="btn-nav">Contattaci</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <p class="hero-label">Powered by Direct Performance</p>
+    <h1>La piattaforma AI di marketing<br>che ti dà esattamente quello che ti serve.</h1>
+    <p class="hero-payoff">Naviga i dati. Semplifica le decisioni.</p>
+    <p class="hero-sub">
+      Un ecosistema modulare di strumenti intelligenti per coprire l'intero ciclo di marketing —
+      dall'acquisizione del lead alla crescita organica — senza sprechi, senza complessità inutile.
+      Usi solo ciò che serve al tuo business. E funziona.
+    </p>
+    <div class="hero-ctas">
+      <a href="#core-tool" class="btn-primary">Scopri gli strumenti</a>
+      <a href="#contatti" class="btn-secondary">Parlaci del tuo progetto</a>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator"><span></span></div>
+</section>
+
+<!-- ============ COS'È MAGELLANO ============ -->
+<section id="cosa-e">
+  <div class="container">
+    <div class="section-label">La piattaforma</div>
+    <h2>Non un tool.<br>Un ecosistema di marketing.</h2>
+    <p class="section-intro">
+      Magellano non è un singolo software. È un sistema integrato di strumenti pensati per ogni fase
+      del ciclo di marketing: acquisizione, conversione, crescita, analisi.
+    </p>
+    <div class="ecosystem-grid">
+      <div class="ecosystem-card">
+        <div class="eco-icon">⚙️</div>
+        <h4>Core Tool</h4>
+        <p>Strumenti trasversali che alimentano ogni area della piattaforma, su tutti i cicli di marketing.</p>
+      </div>
+      <div class="ecosystem-card highlight">
+        <div class="eco-icon">🎯</div>
+        <h4>Lead Generation</h4>
+        <p>Acquisisci, genera e qualifica ogni contatto. Dal primo click alla conversione.</p>
+      </div>
+      <div class="ecosystem-card highlight">
+        <div class="eco-icon">📈</div>
+        <h4>Advertising</h4>
+        <p>Massimizza ogni euro investito sul media con dati e ottimizzazione continua.</p>
+      </div>
+      <div class="ecosystem-card highlight">
+        <div class="eco-icon">🌱</div>
+        <h4>Organic Growth</h4>
+        <p>Costruisci visibilità organica duratura — su Google e dentro i motori AI.</p>
+      </div>
+    </div>
+    <p class="section-footnote">
+      Ogni modulo si parla con gli altri. I dati fluiscono senza silos. Tu vedi solo quello che conta.
+    </p>
+  </div>
+</section>
+
+<!-- ============ CORE TOOL ============ -->
+<section id="core-tool" class="section-dark">
+  <div class="container">
+    <div class="section-label teal">Core Tool</div>
+    <h2>La base che alimenta tutto.</h2>
+    <p class="section-intro">
+      Strumenti trasversali che lavorano su tutti i cicli di marketing — acquisizione, conversione, crescita.
+      Garantiscono intelligenza, automazione e qualità del dato in ogni fase del percorso.
+    </p>
+
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">🤖</div>
+          <div class="tool-title">
+            <h3>AI Agent</h3>
+            <p class="tool-tagline">Il tuo assistente intelligente sempre operativo.</p>
+          </div>
+          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
         </div>
+        <div class="tool-body">
+          <p>Un agente AI configurabile che supporta analisi, risponde a domande sul tuo business,
+          processa dati e genera insight personalizzati. Si integra con tutti gli altri moduli Magellano.</p>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">🌐</div>
+          <div class="tool-title">
+            <h3>Specialized Portals</h3>
+            <p class="tool-tagline">Un portale su misura per ogni esigenza.</p>
+          </div>
+          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
+        </div>
+        <div class="tool-body">
+          <p>Interfacce verticali progettate su misura per settore o per cliente. Ogni portale porta
+          in superficie solo le funzionalità rilevanti, eliminando il rumore. Accessibile, scalabile, configurabile.</p>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">⚡</div>
+          <div class="tool-title">
+            <h3>Automation</h3>
+            <p class="tool-tagline">Automatizza i processi. Libera le persone.</p>
+          </div>
+          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
+        </div>
+        <div class="tool-body">
+          <p>Motore di automazione per email, messaggistica e trascrizioni. Riduce il lavoro manuale
+          ripetitivo, aumenta la velocità operativa e garantisce coerenza nelle comunicazioni su larga scala.</p>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">🗄️</div>
+          <div class="tool-title">
+            <h3>Magellano Data ETL</h3>
+            <p class="tool-tagline">I tuoi dati, finalmente in ordine.</p>
+          </div>
+          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
+        </div>
+        <div class="tool-body">
+          <p>Estrazione, trasformazione e caricamento dati da qualsiasi fonte. Il DataHub centralizza
+          le informazioni, le pulisce e le rende disponibili per analisi, reportistica e decisioni in tempo reale.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREE SPECIALIZZATE ============ -->
+<section id="aree">
+  <div class="container">
+    <div class="section-label">Aree specializzate</div>
+    <h2>Dove Magellano lavora per te.</h2>
+    <p class="section-intro">
+      Tre aree di applicazione, ognuna con strumenti dedicati. Ognuna integrata con i Core Tool.
+    </p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="leadgen">Lead Generation</button>
+      <button class="tab-btn" data-tab="advertising">Advertising</button>
+      <button class="tab-btn" data-tab="organic">Organic Growth</button>
     </div>
 
-    <!-- Hero Image Placeholder -->
-    <div class="hero-image">
-        <div class="hero-image-placeholder">
-            <div>🤖 IMMAGINE HERO: Robot Direct + Elementi AI</div>
-            <div class="format">Formato: 1920x300px (landscape) | JPG o PNG</div>
+    <!-- TAB: LEAD GENERATION -->
+    <div class="tab-content active" id="tab-leadgen">
+      <div class="area-header">
+        <h3>Lead Generation</h3>
+        <p class="area-payoff">Acquisisci. Genera. Qualifica.</p>
+        <p>Ogni lead costa. Magellano fa sì che nessuno venga sprecato. Dal primo click alla qualifica
+        finale, ogni fase del funnel è presidiata da strumenti precisi che lavorano in sincronia.</p>
+      </div>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📣</div>
+            <div class="tool-title">
+              <h3>Campaign Management</h3>
+              <p class="tool-tagline">Campagne che convertono, non solo che girano.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Pianificazione, attivazione e ottimizzazione delle campagne di acquisizione. Gestione
+            del customer journey completo, con regole automatizzate che adattano i messaggi in base
+            al comportamento dell'utente.</p>
+          </div>
         </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🎯</div>
+            <div class="tool-title">
+              <h3>Lead Management</h3>
+              <p class="tool-tagline">Solo i lead giusti, al momento giusto.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Sistema di validazione, scoring e gestione del ciclo di vita del lead. Filtra il rumore,
+            prioritizza i contatti ad alto potenziale e li indirizza verso i canali di conversione corretti.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📊</div>
+            <div class="tool-title">
+              <h3>Tracking &amp; Analytics</h3>
+              <p class="tool-tagline">Misura ogni passo del percorso.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Dashboard di performance in tempo reale. Monitora KPI, traccia il comportamento degli
+            utenti e trasforma i dati in azioni concrete per ottimizzare continuamente le campagne.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📋</div>
+            <div class="tool-title">
+              <h3>Data Entry</h3>
+              <p class="tool-tagline">Raccolta dati unificata, zero dispersione.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Form intelligenti e sistemi di data entry centralizzati che integrano i dati direttamente
+            nel flusso Magellano, eliminando le operazioni manuali e riducendo gli errori.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🌐</div>
+            <div class="tool-title">
+              <h3>Specialized Portals</h3>
+              <p class="tool-tagline">Portali verticali per la gestione lead.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Portali verticali configurati specificamente per la gestione e il monitoraggio
+            dell'acquisizione lead per settore o cliente.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Benefits Strip - Subito sotto header -->
-    <div class="benefits-strip">
-        <h2>Cosa Include la Partecipazione</h2>
-        <div class="benefits-grid-strip">
-            <div class="benefit-card-strip">
-                <div class="benefit-icon-strip">☕</div>
-                <h3>Welcome Breakfast</h3>
-                <p>Networking e colazione</p>
+    <!-- TAB: ADVERTISING -->
+    <div class="tab-content" id="tab-advertising">
+      <div class="area-header">
+        <h3>Advertising</h3>
+        <p class="area-payoff">Ogni euro investito. Ogni risultato misurato.</p>
+        <p>L'advertising funziona quando i dati guidano le decisioni. Magellano segue l'intero percorso
+        dell'utente — dalla prima impression alla conversione — per massimizzare il ROI su ogni canale
+        e in ogni fase del full funnel.</p>
+      </div>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🗄️</div>
+            <div class="tool-title">
+              <h3>Magellano Data ETL</h3>
+              <p class="tool-tagline">Tutti i tuoi dati pubblicitari in un unico posto.</p>
             </div>
-            <div class="benefit-card-strip">
-                <div class="benefit-icon-strip">🎓</div>
-                <h3>Sessioni Formative</h3>
-                <p>4 ore con esperti SEO & AI</p>
-            </div>
-            <div class="benefit-card-strip">
-                <div class="benefit-icon-strip">🍽️</div>
-                <h3>Light Lunch</h3>
-                <p>Pranzo e networking</p>
-            </div>
-            <div class="benefit-card-strip">
-                <div class="benefit-icon-strip">💻</div>
-                <h3>Live + Streaming</h3>
-                <p>In presenza o online</p>
-            </div>
-            <div class="benefit-card-strip">
-                <div class="benefit-icon-strip">📊</div>
-                <h3>Materiali Esclusivi</h3>
-                <p>Slide, checklist e tool</p>
-            </div>
-            <div class="benefit-card-strip">
-                <div class="benefit-icon-strip">🤝</div>
-                <h3>Q&A Dedicata</h3>
-                <p>Domande sul tuo business</p>
-            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Consolida i dati da tutte le piattaforme advertising — Google, Meta, e oltre — in
+            un'unica fonte di verità. Elimina i silos, allinea i KPI e rende leggibile l'intera
+            performance di campagna.</p>
+          </div>
         </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📊</div>
+            <div class="tool-title">
+              <h3>Tracking &amp; Analytics</h3>
+              <p class="tool-tagline">Full funnel. Nessun punto cieco.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Tracciamento multicanale e attribuzione avanzata. Capisce cosa funziona davvero lungo
+            il percorso dell'utente e ottimizza la distribuzione del budget in tempo reale.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- TAB: ORGANIC GROWTH -->
+    <div class="tab-content" id="tab-organic">
+      <div class="area-header">
+        <h3>Organic Growth</h3>
+        <p class="area-payoff">Costruisci visibilità che dura.</p>
+        <p>La crescita organica oggi non significa solo scalare su Google. Significa essere trovati
+        anche dentro i motori di intelligenza artificiale — ChatGPT, Perplexity, Gemini — dove
+        sempre più persone cercano risposte. Magellano lavora su entrambi i fronti: contenuto che
+        convince e presenza che persiste.</p>
+      </div>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📝</div>
+            <div class="tool-title">
+              <h3>Content Analysis</h3>
+              <p class="tool-tagline">Capisci cosa funziona. Produci di più.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Analisi automatizzata dei contenuti — performance, sentiment, rilevanza. Identifica i
+            temi che generano engagement, i formati che convertono e le lacune da colmare nella tua
+            strategia editoriale.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📊</div>
+            <div class="tool-title">
+              <h3>Dashboard Content Analysis</h3>
+              <p class="tool-tagline">Tutto il tuo contenuto. Un'unica visione.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Reportistica visiva e aggiornata sulla performance dei contenuti. KPI chiari, trend
+            leggibili, decisioni editoriali guidate dai dati.</p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🗺️</div>
+            <div class="tool-title">
+              <h3>Sentiment Geo</h3>
+              <p class="tool-tagline">Cosa dice il mercato. Dove lo dice.</p>
+            </div>
+            <button class="tool-toggle">+</button>
+          </div>
+          <div class="tool-body">
+            <p>Analisi del sentiment geografica: monitora come viene percepito il tuo brand, i tuoi
+            prodotti o i tuoi competitor in diverse aree geografiche, in tempo reale.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SETTORI ============ -->
+<section id="settori" class="section-dark">
+  <div class="container">
+    <div class="section-label teal">Settori</div>
+    <h2>Magellano lavora già<br>per questi settori.</h2>
+    <p class="section-intro">
+      Ogni settore ha le sue complessità. Magellano si adatta — moduli, portali e automazioni
+      configurati sulle esigenze reali di chi opera in quell'industria.
+    </p>
+    <div class="settori-grid">
+
+      <div class="settore-card">
+        <div class="settore-icon">💼</div>
+        <h4>Finance &amp; Insurance</h4>
+        <p>Qualifica lead complessi, gestisci compliance e ottimizza ogni campagna di acquisizione
+        in un settore dove ogni contatto conta doppio.</p>
+      </div>
+
+      <div class="settore-card">
+        <div class="settore-icon">⚡</div>
+        <h4>Utilities &amp; Energy</h4>
+        <p>Automatizza la raccolta dati, presidia il cambio fornitore e segui l'utente dal primo
+        interesse alla firma.</p>
+      </div>
+
+      <div class="settore-card">
+        <div class="settore-icon">🛒</div>
+        <h4>E-commerce &amp; Retail</h4>
+        <p>Dall'acquisizione alla fidelizzazione: traccia il journey completo e massimizza il
+        valore di ogni cliente.</p>
+      </div>
+
+      <div class="settore-card">
+        <div class="settore-icon">🚗</div>
+        <h4>Automotive</h4>
+        <p>Gestisci grandi volumi di lead da concessionarie e campagne nazionali, con scoring
+        automatico e attribuzione precisa.</p>
+      </div>
+
+      <div class="settore-card">
+        <div class="settore-icon">🎓</div>
+        <h4>Education</h4>
+        <p>Dalla lead generation per iscrizioni fino all'analisi dei contenuti: accompagna lo
+        studente in ogni fase della sua scelta.</p>
+      </div>
+
+    </div>
+    <div class="settori-cta">
+      <p>Il tuo settore non c'è?</p>
+      <a href="#contatti" class="btn-primary">Parliamoci →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDY ============ -->
+<section id="case">
+  <div class="container">
+    <div class="section-label">Risultati</div>
+    <h2>Risultati reali. Numeri veri.</h2>
+    <div class="case-grid">
+
+      <div class="case-card">
+        <div class="case-tag">Lead Generation · Assicurazioni</div>
+        <h4>"Come abbiamo generato X lead qualificati al mese riducendo il costo per acquisizione del Y%."</h4>
+        <div class="case-tools">
+          <span>Lead Management</span>
+          <span>Campaign Management</span>
+          <span>Tracking</span>
+        </div>
+        <div class="case-logo-placeholder">Logo Cliente</div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-tag">Organic Growth · E-commerce</div>
+        <h4>"Da invisibili a referenza AI: come un brand ha triplicato la visibilità organica in 6 mesi."</h4>
+        <div class="case-tools">
+          <span>Content Analysis</span>
+          <span>Sentiment Geo</span>
+        </div>
+        <div class="case-logo-placeholder">Logo Cliente</div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-tag">Advertising · Energy</div>
+        <h4>"Full funnel advertising con attribuzione reale: +90% di efficienza sul budget media."</h4>
+        <div class="case-tools">
+          <span>Data ETL</span>
+          <span>Tracking &amp; Analytics</span>
+        </div>
+        <div class="case-logo-placeholder">Logo Cliente</div>
+      </div>
+
+    </div>
+    <div class="case-cta">
+      <a href="#contatti" class="btn-primary">Vuoi risultati simili? Parliamoci.</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section id="contatti" class="section-dark">
+  <div class="container">
+    <div class="section-label teal">Contatti</div>
+    <h2>Inizia da qui.</h2>
+    <p class="section-intro">
+      Raccontaci del tuo business. Ti diciamo quali strumenti Magellano possono fare la differenza —
+      senza giri, senza demo infinite.
+    </p>
+
+    <div class="contact-grid">
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" name="nome" required placeholder="Il tuo nome">
+          </div>
+          <div class="form-group">
+            <label for="azienda">Azienda *</label>
+            <input type="text" id="azienda" name="azienda" required placeholder="La tua azienda">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="email@azienda.it">
+          </div>
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+39 02 ...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="messaggio">Messaggio</label>
+          <textarea id="messaggio" name="messaggio" rows="4" placeholder="Raccontaci del tuo progetto..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Richiedi un'analisi gratuita</button>
+      </form>
+
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <div>
+            <p class="info-label">Email</p>
+            <a href="mailto:info@directperformance.it">info@directperformance.it</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <p class="info-label">Telefono</p>
+            <a href="tel:+390264741401">+39 02 6474 1401</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <p class="info-label">Indirizzo</p>
+            <p>Viale Sarca 336<br>20126 Milano</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🔗</div>
+          <div>
+            <p class="info-label">Scopri anche</p>
+            <a href="https://directperformance.it" target="_blank" rel="noopener">directperformance.it →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+
+    <div class="footer-left">
+      <a href="#" class="logo">
+        <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+          <path d="M4 28 Q10 8 18 18 Q26 28 32 8" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="8" r="2.5" fill="#06c7b2"/>
+        </svg>
+        <span class="logo-text">Magellano<span class="logo-dot">.ai</span></span>
+      </a>
+      <p class="footer-tagline">Naviga i dati. Semplifica le decisioni.</p>
+      <p class="footer-legal">
+        Una tecnologia proprietaria di
+        <a href="https://directperformance.it" target="_blank" rel="noopener">Direct Performance S.r.l.</a><br>
+        Viale Sarca 336, 20126 Milano
+      </p>
+    </div>
+
+    <div class="footer-right">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#cosa-e">La piattaforma</a>
+        <a href="#core-tool">Core Tool</a>
+        <a href="#aree">Aree</a>
+        <a href="#settori">Settori</a>
+        <a href="#case">Case</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
     <div class="container">
-        <div class="content-wrapper">
-            <!-- Registration Form - A SINISTRA -->
-            <div class="registration-section">
-                <h2>Registrati</h2>
-                <p class="subtitle">Compila il form per partecipare all'evento</p>
-                <form id="registrationForm">
-                    <div class="form-group">
-                        <label for="name">Nome e Cognome *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Azienda *</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefono *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <button type="submit" class="submit-btn">Prenota il tuo posto</button>
-                </form>
-            </div>
-
-            <!-- Program Section - A DESTRA -->
-            <div class="program-section">
-                <h2>Programma dell'Academy</h2>
-
-                <!-- Image Placeholder 1 - GEO -->
-                <div class="section-image">
-                    <div class="section-image-placeholder">
-                        <div>🔍 IMMAGINE: Grafici e SEO/GEO Analytics</div>
-                        <div class="format">Formato: 800x400px | JPG o PNG</div>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 1 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>1. GEO - Generative Engine Optimization: Farsi Trovare nelle Risposte AI</h3>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            <p>Le ricerche degli utenti si concludono sempre più spesso con risposte AI dirette, senza click verso i siti web. La GEO risponde a questa evoluzione: ottimizzare contenuti e strutture per essere selezionati e citati dai modelli linguistici come fonte autorevole.</p>
-                            <p><strong>Focus operativi:</strong></p>
-                            <ul>
-                                <li>Identificare quali query del vostro settore generano risposte AI (e intercettarle prima dei competitor)</li>
-                                <li>Strutturare schede prodotto e pagine categoria per essere citabili da ChatGPT, Gemini e Perplexity</li>
-                                <li>Trasformare FAQ e guide in contenuti che l'AI riconosce come fonti autorevoli</li>
-                                <li>Misurare la visibilità del vostro brand nelle risposte generate: nuove metriche oltre il ranking tradizionale</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Image Placeholder 2 - Digital PR -->
-                <div class="section-image">
-                    <div class="section-image-placeholder">
-                        <div>📰 IMMAGINE: Digital PR & Media Coverage</div>
-                        <div class="format">Formato: 800x400px | JPG o PNG</div>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 2 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>2. Digital PR e Brand Authority: Dalla Visibilità alla Vendibilità</h3>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            <p>Nell'ecosistema AI-driven, chi viene citato vende. I modelli linguistici privilegiano brand menzionati su fonti autorevoli, con prove verificabili e presenza costante nel settore.</p>
-                            <p><strong>Focus operativi:</strong></p>
-                            <ul>
-                                <li>Ottenere menzioni su testate verticali che l'AI considera autorevoli nel vostro mercato</li>
-                                <li>Creare dati proprietari (ricerche, trend report) che media e AI citano come fonte</li>
-                                <li>Trasformare case study e risultati clienti in contenuti linkabili da publisher di settore</li>
-                                <li>Costruire partnership strategiche che generano link, credibilità e conversioni</li>
-                                <li>ROI concreto: da quanto traffico Google a quanto fatturato da menzioni autorevoli</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Image Placeholder 3 - Magellano AI -->
-                <div class="section-image">
-                    <div class="section-image-placeholder">
-                        <div>🤖 IMMAGINE: Magellano AI Dashboard/Automazioni</div>
-                        <div class="format">Formato: 800x400px | JPG o PNG</div>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 3 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>3. Magellano AI: Automazione Scalabile per Ecommerce e Siti Complessi</h3>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            <p>Ottimizzare manualmente migliaia di prodotti è impossibile. Magellano AI, il nostro tool proprietario, permette di implementare ottimizzazioni SEO massive mantenendo personalizzazione e qualità su scala industriale.</p>
-                            <p><strong>Focus operativi:</strong></p>
-                            <ul>
-                                <li>Generare automaticamente metadati unici e ottimizzati per migliaia di SKU</li>
-                                <li>Implementare dati strutturati su tutto il catalogo in ore, non mesi</li>
-                                <li>Ottimizzare alt text di prodotti basandosi su attributi, categorie e ricerche degli utenti</li>
-                                <li>Intercettare e correggere automaticamente criticità SEO tecniche prima che impattino le vendite</li>
-                                <li>Case study: come abbiamo ottimizzato 15.000 prodotti in 2 settimane con risultati misurabili</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Image Placeholder 4 - Case Study -->
-                <div class="section-image">
-                    <div class="section-image-placeholder">
-                        <div>📈 IMMAGINE: Risultati/Success Stories/Grafici</div>
-                        <div class="format">Formato: 800x400px | JPG o PNG</div>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 4 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>4. Caso Concreto: Come Stiamo Posizionando un Cliente nell'Era GEO</h3>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="accordion-body">
-                            <p>Chiusura dell'Academy con un progetto reale in corso: strategia implementata, sfide affrontate, primi risultati ottenuti e prossimi step. Panoramica pratica su GEO, Digital PR e automazioni AI applicate a un business concreto.</p>
-                            <p><strong>Focus operativi:</strong></p>
-                            <ul>
-                                <li>Dall'audit iniziale alla roadmap: come abbiamo individuato le opportunità GEO</li>
-                                <li>Quali contenuti abbiamo ristrutturato e perché</li>
-                                <li>Risultati early-stage: menzioni AI, traffico qualificato, impatto su conversioni</li>
-                                <li>Learnings replicabili per il vostro business</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <p>© 2025 Direct Performance S.r.l. — Tutti i diritti riservati</p>
     </div>
+  </div>
+</footer>
 
-    <!-- Target Section -->
-    <div class="target-section">
-        <h2>A chi è dedicata l'Academy</h2>
-        <p>Questa Academy è pensata principalmente per professionisti del settore <strong>Fashion & Apparel</strong>, ma è aperta a tutti i decision maker e responsabili marketing che vogliono comprendere come l'AI sta trasformando il SEO e la visibilità digitale dei brand.</p>
-    </div>
-
-    <!-- Venue Section -->
-    <div class="venue-section">
-        <div class="venue-content">
-            <div class="venue-text">
-                <h2>Ti aspettiamo a Milano</h2>
-                <p>L'evento si terrà presso la nostra sede di Milano, facilmente raggiungibile con i mezzi pubblici. Sarete nostri ospiti per una colazione di benvenuto e un light lunch.</p>
-                <p>Non puoi essere presente? Nessun problema: l'evento sarà disponibile anche in streaming live.</p>
-            </div>
-            <div class="venue-image-placeholder">
-                <div class="text">📍 IMMAGINE: Mappa Milano o Sede/Aula</div>
-                <div class="format">Formato: 700x500px | JPG o PNG</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <p><strong>Direct Performance</strong> - Part of Triboo Group</p>
-        <p>Per informazioni: <a href="mailto:academy@directperformance.it">academy@directperformance.it</a></p>
-        <p><a href="https://www.directperformance.it">www.directperformance.it</a></p>
-    </div>
-
-    <script>
-        // Accordion functionality
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-        
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Close all accordion items
-                document.querySelectorAll('.accordion-item').forEach(accItem => {
-                    accItem.classList.remove('active');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Form submission
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                company: document.getElementById('company').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value
-            };
-            
-            // Here you would normally send the data to your backend
-            console.log('Form submitted:', formData);
-            
-            // Show success message
-            alert('Grazie per la registrazione! Riceverai una email di conferma a breve.');
-            
-            // Reset form
-            this.reset();
-        });
-    </script>
+<script src="js/script.js"></script>
 </body>
 </html>
