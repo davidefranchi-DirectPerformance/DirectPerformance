@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Magellano.ai — Naviga i dati. Semplifica le decisioni.</title>
-  <meta name="description" content="Magellano è la piattaforma AI di marketing proprietaria di Direct Performance. Strumenti intelligenti per lead generation, advertising e crescita organica.">
+  <meta name="description" content="Magellano è l'ecosistema di marketing AI-powered di Direct Performance. Una control tower centralizzata per lead generation, advertising e organic growth.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,16 +16,26 @@
 <nav id="navbar">
   <div class="container nav-inner">
     <a href="#" class="logo">
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 28 Q10 8 18 18 Q26 28 32 8" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <circle cx="32" cy="8" r="2.5" fill="#06c7b2"/>
-      </svg>
+      <div class="logo-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 28 Q10 8 18 18 Q26 28 32 8" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="32" cy="8" r="2.5" fill="#06c7b2"/>
+          <circle class="logo-cursor" cx="32" cy="8" r="4" fill="none" stroke="#06c7b2" stroke-width="1" opacity="0.6"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="4" y1="28" x2="32" y2="8">
+              <stop offset="0%" stop-color="#06c7b2" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#06c7b2"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-glow"></div>
+      </div>
       <span class="logo-text">Magellano<span class="logo-dot">.ai</span></span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#cosa-e">La piattaforma</a>
-      <a href="#core-tool">Core Tool</a>
-      <a href="#aree">Aree</a>
+      <a href="#ecosistema">L'ecosistema</a>
+      <a href="#control-tower">Control Tower</a>
+      <a href="#aree">Cosa facciamo</a>
       <a href="#settori">Settori</a>
       <a href="#case">Case</a>
       <a href="#contatti" class="btn-nav">Contattaci</a>
@@ -41,15 +51,15 @@
   <div class="hero-bg"></div>
   <div class="container hero-content">
     <p class="hero-label">Powered by Direct Performance</p>
-    <h1>La piattaforma AI di marketing<br>che ti dà esattamente quello che ti serve.</h1>
+    <h1>L'ecosistema di marketing<br>che governa i tuoi dati.</h1>
     <p class="hero-payoff">Naviga i dati. Semplifica le decisioni.</p>
     <p class="hero-sub">
-      Un ecosistema modulare di strumenti intelligenti per coprire l'intero ciclo di marketing —
-      dall'acquisizione del lead alla crescita organica — senza sprechi, senza complessità inutile.
-      Usi solo ciò che serve al tuo business. E funziona.
+      Magellano è l'ecosistema di marketing AI-powered di Direct Performance.
+      Un sistema centralizzato che integra acquisizione, advertising e crescita organica
+      in un'unica control tower — dove ogni dato ha un senso e ogni decisione è guidata.
     </p>
     <div class="hero-ctas">
-      <a href="#core-tool" class="btn-primary">Scopri gli strumenti</a>
+      <a href="#control-tower" class="btn-primary">Scopri come funziona</a>
       <a href="#contatti" class="btn-secondary">Parlaci del tuo progetto</a>
     </div>
   </div>
@@ -57,325 +67,212 @@
 </section>
 
 <!-- ============ COS'È MAGELLANO ============ -->
-<section id="cosa-e">
+<section id="ecosistema">
   <div class="container">
-    <div class="section-label">La piattaforma</div>
-    <h2>Non un tool.<br>Un ecosistema di marketing.</h2>
+    <div class="section-label">L'ecosistema</div>
+    <h2>Non un software.<br>Un ecosistema di marketing.</h2>
     <p class="section-intro">
-      Magellano non è un singolo software. È un sistema integrato di strumenti pensati per ogni fase
-      del ciclo di marketing: acquisizione, conversione, crescita, analisi.
+      Magellano non è un tool. È un sistema integrato che unisce intelligenza artificiale,
+      automazione e dati in un unico ambiente. Tutto si connette, tutto si parla.
+      L'AI è lo strumento che Magellano sfrutta per rendere ogni processo più veloce,
+      ogni analisi più profonda, ogni decisione più chiara.
     </p>
-    <div class="ecosystem-grid">
-      <div class="ecosystem-card">
-        <div class="eco-icon">⚙️</div>
-        <h4>Core Tool</h4>
-        <p>Strumenti trasversali che alimentano ogni area della piattaforma, su tutti i cicli di marketing.</p>
+    <div class="ecosystem-pillars">
+      <div class="pillar">
+        <div class="pillar-number">01</div>
+        <h4>Un centro di comando unico</h4>
+        <p>Una control tower che integra tutti i flussi di marketing — lead, advertising, contenuti — in un'unica visione operativa.</p>
       </div>
-      <div class="ecosystem-card highlight">
-        <div class="eco-icon">🎯</div>
-        <h4>Lead Generation</h4>
-        <p>Acquisisci, genera e qualifica ogni contatto. Dal primo click alla conversione.</p>
+      <div class="pillar">
+        <div class="pillar-number">02</div>
+        <h4>AI come acceleratore</h4>
+        <p>L'intelligenza artificiale non è il prodotto. È il motore invisibile che alimenta automazione, analisi predittiva e ottimizzazione continua.</p>
       </div>
-      <div class="ecosystem-card highlight">
-        <div class="eco-icon">📈</div>
-        <h4>Advertising</h4>
-        <p>Massimizza ogni euro investito sul media con dati e ottimizzazione continua.</p>
+      <div class="pillar">
+        <div class="pillar-number">03</div>
+        <h4>Dati senza silos</h4>
+        <p>Ogni informazione fluisce liberamente tra le aree. Nessuna dispersione, nessun dato perso. Solo decisioni informate.</p>
       </div>
-      <div class="ecosystem-card highlight">
-        <div class="eco-icon">🌱</div>
-        <h4>Organic Growth</h4>
-        <p>Costruisci visibilità organica duratura — su Google e dentro i motori AI.</p>
-      </div>
-    </div>
-    <p class="section-footnote">
-      Ogni modulo si parla con gli altri. I dati fluiscono senza silos. Tu vedi solo quello che conta.
-    </p>
-  </div>
-</section>
-
-<!-- ============ CORE TOOL ============ -->
-<section id="core-tool" class="section-dark">
-  <div class="container">
-    <div class="section-label teal">Core Tool</div>
-    <h2>La base che alimenta tutto.</h2>
-    <p class="section-intro">
-      Strumenti trasversali che lavorano su tutti i cicli di marketing — acquisizione, conversione, crescita.
-      Garantiscono intelligenza, automazione e qualità del dato in ogni fase del percorso.
-    </p>
-
-    <div class="tools-grid">
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">🤖</div>
-          <div class="tool-title">
-            <h3>AI Agent</h3>
-            <p class="tool-tagline">Il tuo assistente intelligente sempre operativo.</p>
-          </div>
-          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
-        </div>
-        <div class="tool-body">
-          <p>Un agente AI configurabile che supporta analisi, risponde a domande sul tuo business,
-          processa dati e genera insight personalizzati. Si integra con tutti gli altri moduli Magellano.</p>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">🌐</div>
-          <div class="tool-title">
-            <h3>Specialized Portals</h3>
-            <p class="tool-tagline">Un portale su misura per ogni esigenza.</p>
-          </div>
-          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
-        </div>
-        <div class="tool-body">
-          <p>Interfacce verticali progettate su misura per settore o per cliente. Ogni portale porta
-          in superficie solo le funzionalità rilevanti, eliminando il rumore. Accessibile, scalabile, configurabile.</p>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">⚡</div>
-          <div class="tool-title">
-            <h3>Automation</h3>
-            <p class="tool-tagline">Automatizza i processi. Libera le persone.</p>
-          </div>
-          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
-        </div>
-        <div class="tool-body">
-          <p>Motore di automazione per email, messaggistica e trascrizioni. Riduce il lavoro manuale
-          ripetitivo, aumenta la velocità operativa e garantisce coerenza nelle comunicazioni su larga scala.</p>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-header">
-          <div class="tool-icon">🗄️</div>
-          <div class="tool-title">
-            <h3>Magellano Data ETL</h3>
-            <p class="tool-tagline">I tuoi dati, finalmente in ordine.</p>
-          </div>
-          <button class="tool-toggle" aria-label="Espandi dettaglio">+</button>
-        </div>
-        <div class="tool-body">
-          <p>Estrazione, trasformazione e caricamento dati da qualsiasi fonte. Il DataHub centralizza
-          le informazioni, le pulisce e le rende disponibili per analisi, reportistica e decisioni in tempo reale.</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============ AREE SPECIALIZZATE ============ -->
+<!-- ============ CONTROL TOWER ============ -->
+<section id="control-tower" class="section-dark">
+  <div class="container">
+    <div class="section-label teal">Control Tower</div>
+    <h2>Il centro di tutto.</h2>
+    <p class="section-intro">
+      La Control Tower è il cuore operativo di Magellano. Da qui governi l'intero ecosistema:
+      monitoraggio in tempo reale, automazione dei processi, gestione centralizzata dei dati
+      e intelligenza artificiale integrata in ogni flusso.
+    </p>
+
+    <!-- ANIMATED HUB -->
+    <div class="tower-hub" id="towerHub">
+      <div class="hub-center">
+        <div class="hub-core">
+          <div class="hub-pulse"></div>
+          <div class="hub-pulse delay"></div>
+          <div class="hub-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M6 38 Q14 10 24 24 Q34 38 42 10" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="42" cy="10" r="3" fill="#06c7b2"/>
+            </svg>
+          </div>
+          <span class="hub-label">Control Tower</span>
+        </div>
+
+        <!-- Connection lines (SVG) -->
+        <svg class="hub-lines" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+          <path class="hub-line line-lead" d="M400,200 Q250,100 120,180" stroke="#06c7b2" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
+          <path class="hub-line line-adv" d="M400,200 Q400,80 400,60" stroke="#06c7b2" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
+          <path class="hub-line line-organic" d="M400,200 Q550,100 680,180" stroke="#06c7b2" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
+          <!-- Data particles will be animated via CSS -->
+          <circle class="data-particle p1" cx="0" cy="0" r="3" fill="#06c7b2"/>
+          <circle class="data-particle p2" cx="0" cy="0" r="3" fill="#06c7b2"/>
+          <circle class="data-particle p3" cx="0" cy="0" r="3" fill="#06c7b2"/>
+        </svg>
+
+        <!-- Satellite nodes -->
+        <div class="hub-node node-lead" data-area="leadgen">
+          <div class="node-dot"></div>
+          <span>Lead Generation</span>
+        </div>
+        <div class="hub-node node-adv" data-area="advertising">
+          <div class="node-dot"></div>
+          <span>Advertising</span>
+        </div>
+        <div class="hub-node node-organic" data-area="organic">
+          <div class="node-dot"></div>
+          <span>Organic Growth</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES (ex core tool, ora funzionalità della Control Tower) -->
+    <div class="tower-features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06c7b2" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h4>AI integrata</h4>
+        <p>Assistenti intelligenti, analisi predittiva e automazione cognitiva su ogni flusso operativo.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06c7b2" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h4>Portali specializzati</h4>
+        <p>Interfacce verticalizzate per settore o cliente. Ogni utente vede solo ciò che gli serve.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06c7b2" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h4>Automazione</h4>
+        <p>Email, messaggistica, trascrizioni, workflow. Meno lavoro manuale, più velocità operativa.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06c7b2" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/></svg>
+        </div>
+        <h4>Data Hub centralizzato</h4>
+        <p>Estrazione, trasformazione e caricamento dati da ogni fonte. Un'unica verità per tutto l'ecosistema.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LE 3 AREE ============ -->
 <section id="aree">
   <div class="container">
-    <div class="section-label">Aree specializzate</div>
+    <div class="section-label">Cosa facciamo</div>
     <h2>Dove Magellano lavora per te.</h2>
     <p class="section-intro">
-      Tre aree di applicazione, ognuna con strumenti dedicati. Ognuna integrata con i Core Tool.
+      Tre aree operative, un unico ecosistema. Ogni area è alimentata dalla Control Tower
+      e potenziata dall'intelligenza artificiale.
     </p>
 
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="leadgen">Lead Generation</button>
-      <button class="tab-btn" data-tab="advertising">Advertising</button>
-      <button class="tab-btn" data-tab="organic">Organic Growth</button>
-    </div>
-
-    <!-- TAB: LEAD GENERATION -->
-    <div class="tab-content active" id="tab-leadgen">
-      <div class="area-header">
-        <h3>Lead Generation</h3>
-        <p class="area-payoff">Acquisisci. Genera. Qualifica.</p>
-        <p>Ogni lead costa. Magellano fa sì che nessuno venga sprecato. Dal primo click alla qualifica
-        finale, ogni fase del funnel è presidiata da strumenti precisi che lavorano in sincronia.</p>
+    <!-- AREA 1: LEAD GENERATION -->
+    <div class="area-card" id="area-leadgen">
+      <div class="area-card-header">
+        <div class="area-number">01</div>
+        <div class="area-card-titles">
+          <h3>Lead Generation</h3>
+          <p class="area-payoff">Acquisisci. Qualifica. Converti.</p>
+        </div>
       </div>
-      <div class="tools-grid">
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">📣</div>
-            <div class="tool-title">
-              <h3>Campaign Management</h3>
-              <p class="tool-tagline">Campagne che convertono, non solo che girano.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Pianificazione, attivazione e ottimizzazione delle campagne di acquisizione. Gestione
-            del customer journey completo, con regole automatizzate che adattano i messaggi in base
-            al comportamento dell'utente.</p>
-          </div>
+      <div class="area-card-body">
+        <p class="area-description">
+          Ogni lead costa. Magellano fa sì che nessuno venga sprecato.<br>
+          Dal primo click alla qualifica finale, l'ecosistema presidia l'intero funnel
+          con gestione campagne intelligente, scoring automatico dei contatti,
+          tracking in tempo reale e raccolta dati unificata.
+          Tutto connesso. Tutto misurabile.
+        </p>
+        <div class="area-capabilities">
+          <span>Campaign Management</span>
+          <span>Lead Scoring & Validation</span>
+          <span>Tracking & Analytics</span>
+          <span>Data Entry Unificato</span>
+          <span>Portali Verticali</span>
         </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">🎯</div>
-            <div class="tool-title">
-              <h3>Lead Management</h3>
-              <p class="tool-tagline">Solo i lead giusti, al momento giusto.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Sistema di validazione, scoring e gestione del ciclo di vita del lead. Filtra il rumore,
-            prioritizza i contatti ad alto potenziale e li indirizza verso i canali di conversione corretti.</p>
-          </div>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">📊</div>
-            <div class="tool-title">
-              <h3>Tracking &amp; Analytics</h3>
-              <p class="tool-tagline">Misura ogni passo del percorso.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Dashboard di performance in tempo reale. Monitora KPI, traccia il comportamento degli
-            utenti e trasforma i dati in azioni concrete per ottimizzare continuamente le campagne.</p>
-          </div>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">📋</div>
-            <div class="tool-title">
-              <h3>Data Entry</h3>
-              <p class="tool-tagline">Raccolta dati unificata, zero dispersione.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Form intelligenti e sistemi di data entry centralizzati che integrano i dati direttamente
-            nel flusso Magellano, eliminando le operazioni manuali e riducendo gli errori.</p>
-          </div>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">🌐</div>
-            <div class="tool-title">
-              <h3>Specialized Portals</h3>
-              <p class="tool-tagline">Portali verticali per la gestione lead.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Portali verticali configurati specificamente per la gestione e il monitoraggio
-            dell'acquisizione lead per settore o cliente.</p>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <!-- TAB: ADVERTISING -->
-    <div class="tab-content" id="tab-advertising">
-      <div class="area-header">
-        <h3>Advertising</h3>
-        <p class="area-payoff">Ogni euro investito. Ogni risultato misurato.</p>
-        <p>L'advertising funziona quando i dati guidano le decisioni. Magellano segue l'intero percorso
-        dell'utente — dalla prima impression alla conversione — per massimizzare il ROI su ogni canale
-        e in ogni fase del full funnel.</p>
+    <!-- AREA 2: ADVERTISING -->
+    <div class="area-card" id="area-advertising">
+      <div class="area-card-header">
+        <div class="area-number">02</div>
+        <div class="area-card-titles">
+          <h3>Advertising</h3>
+          <p class="area-payoff">Ogni euro investito. Ogni risultato misurato.</p>
+        </div>
       </div>
-      <div class="tools-grid">
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">🗄️</div>
-            <div class="tool-title">
-              <h3>Magellano Data ETL</h3>
-              <p class="tool-tagline">Tutti i tuoi dati pubblicitari in un unico posto.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Consolida i dati da tutte le piattaforme advertising — Google, Meta, e oltre — in
-            un'unica fonte di verità. Elimina i silos, allinea i KPI e rende leggibile l'intera
-            performance di campagna.</p>
-          </div>
+      <div class="area-card-body">
+        <p class="area-description">
+          L'advertising funziona quando i dati guidano le decisioni.<br>
+          Magellano segue l'intero percorso dell'utente — dalla prima impression alla conversione —
+          consolidando i dati da ogni piattaforma in un'unica fonte di verità.
+          Tracciamento multicanale, attribuzione avanzata e ottimizzazione del budget in tempo reale.
+          Full funnel, nessun punto cieco.
+        </p>
+        <div class="area-capabilities">
+          <span>Consolidamento Dati Multi-piattaforma</span>
+          <span>Tracciamento Full Funnel</span>
+          <span>Attribuzione Avanzata</span>
+          <span>Ottimizzazione Budget Real-time</span>
         </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">📊</div>
-            <div class="tool-title">
-              <h3>Tracking &amp; Analytics</h3>
-              <p class="tool-tagline">Full funnel. Nessun punto cieco.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Tracciamento multicanale e attribuzione avanzata. Capisce cosa funziona davvero lungo
-            il percorso dell'utente e ottimizza la distribuzione del budget in tempo reale.</p>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <!-- TAB: ORGANIC GROWTH -->
-    <div class="tab-content" id="tab-organic">
-      <div class="area-header">
-        <h3>Organic Growth</h3>
-        <p class="area-payoff">Costruisci visibilità che dura.</p>
-        <p>La crescita organica oggi non significa solo scalare su Google. Significa essere trovati
-        anche dentro i motori di intelligenza artificiale — ChatGPT, Perplexity, Gemini — dove
-        sempre più persone cercano risposte. Magellano lavora su entrambi i fronti: contenuto che
-        convince e presenza che persiste.</p>
+    <!-- AREA 3: ORGANIC GROWTH -->
+    <div class="area-card" id="area-organic">
+      <div class="area-card-header">
+        <div class="area-number">03</div>
+        <div class="area-card-titles">
+          <h3>Organic Growth</h3>
+          <p class="area-payoff">Visibilità che dura. Su Google e oltre.</p>
+        </div>
       </div>
-      <div class="tools-grid">
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">📝</div>
-            <div class="tool-title">
-              <h3>Content Analysis</h3>
-              <p class="tool-tagline">Capisci cosa funziona. Produci di più.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Analisi automatizzata dei contenuti — performance, sentiment, rilevanza. Identifica i
-            temi che generano engagement, i formati che convertono e le lacune da colmare nella tua
-            strategia editoriale.</p>
-          </div>
+      <div class="area-card-body">
+        <p class="area-description">
+          Crescere organicamente oggi non significa solo scalare su Google.
+          Significa essere trovati anche dentro i motori di intelligenza artificiale —
+          ChatGPT, Perplexity, Gemini — dove sempre più persone cercano risposte.<br>
+          Magellano lavora su entrambi i fronti: SEO tradizionale e GEO
+          <span class="geo-hint">(Generative Engine Optimization)</span>,
+          con analisi dei contenuti, monitoraggio del sentiment e presenza persistente
+          ovunque il tuo pubblico cerchi.
+        </p>
+        <div class="area-capabilities">
+          <span>SEO & GEO Strategy</span>
+          <span>Content Analysis</span>
+          <span>Sentiment Geo-localizzato</span>
+          <span>Dashboard Editoriale</span>
+          <span>AI Visibility Monitoring</span>
         </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">📊</div>
-            <div class="tool-title">
-              <h3>Dashboard Content Analysis</h3>
-              <p class="tool-tagline">Tutto il tuo contenuto. Un'unica visione.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Reportistica visiva e aggiornata sulla performance dei contenuti. KPI chiari, trend
-            leggibili, decisioni editoriali guidate dai dati.</p>
-          </div>
-        </div>
-
-        <div class="tool-card">
-          <div class="tool-header">
-            <div class="tool-icon">🗺️</div>
-            <div class="tool-title">
-              <h3>Sentiment Geo</h3>
-              <p class="tool-tagline">Cosa dice il mercato. Dove lo dice.</p>
-            </div>
-            <button class="tool-toggle">+</button>
-          </div>
-          <div class="tool-body">
-            <p>Analisi del sentiment geografica: monitora come viene percepito il tuo brand, i tuoi
-            prodotti o i tuoi competitor in diverse aree geografiche, in tempo reale.</p>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -447,7 +344,7 @@
         <div class="case-tag">Lead Generation · Assicurazioni</div>
         <h4>"Come abbiamo generato X lead qualificati al mese riducendo il costo per acquisizione del Y%."</h4>
         <div class="case-tools">
-          <span>Lead Management</span>
+          <span>Lead Scoring</span>
           <span>Campaign Management</span>
           <span>Tracking</span>
         </div>
@@ -459,7 +356,7 @@
         <h4>"Da invisibili a referenza AI: come un brand ha triplicato la visibilità organica in 6 mesi."</h4>
         <div class="case-tools">
           <span>Content Analysis</span>
-          <span>Sentiment Geo</span>
+          <span>GEO Strategy</span>
         </div>
         <div class="case-logo-placeholder">Logo Cliente</div>
       </div>
@@ -468,7 +365,7 @@
         <div class="case-tag">Advertising · Energy</div>
         <h4>"Full funnel advertising con attribuzione reale: +90% di efficienza sul budget media."</h4>
         <div class="case-tools">
-          <span>Data ETL</span>
+          <span>Data Hub</span>
           <span>Tracking &amp; Analytics</span>
         </div>
         <div class="case-logo-placeholder">Logo Cliente</div>
@@ -487,7 +384,7 @@
     <div class="section-label teal">Contatti</div>
     <h2>Inizia da qui.</h2>
     <p class="section-intro">
-      Raccontaci del tuo business. Ti diciamo quali strumenti Magellano possono fare la differenza —
+      Raccontaci del tuo business. Ti diciamo come Magellano può fare la differenza —
       senza giri, senza demo infinite.
     </p>
 
@@ -562,10 +459,12 @@
 
     <div class="footer-left">
       <a href="#" class="logo">
-        <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
-          <path d="M4 28 Q10 8 18 18 Q26 28 32 8" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <circle cx="32" cy="8" r="2.5" fill="#06c7b2"/>
-        </svg>
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+            <path d="M4 28 Q10 8 18 18 Q26 28 32 8" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle cx="32" cy="8" r="2.5" fill="#06c7b2"/>
+          </svg>
+        </div>
         <span class="logo-text">Magellano<span class="logo-dot">.ai</span></span>
       </a>
       <p class="footer-tagline">Naviga i dati. Semplifica le decisioni.</p>
@@ -578,9 +477,9 @@
 
     <div class="footer-right">
       <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="#cosa-e">La piattaforma</a>
-        <a href="#core-tool">Core Tool</a>
-        <a href="#aree">Aree</a>
+        <a href="#ecosistema">L'ecosistema</a>
+        <a href="#control-tower">Control Tower</a>
+        <a href="#aree">Cosa facciamo</a>
         <a href="#settori">Settori</a>
         <a href="#case">Case</a>
         <a href="#contatti">Contatti</a>
@@ -594,7 +493,7 @@
   </div>
   <div class="footer-bottom">
     <div class="container">
-      <p>© 2025 Direct Performance S.r.l. — Tutti i diritti riservati</p>
+      <p>© 2026 Direct Performance S.r.l. — Tutti i diritti riservati</p>
     </div>
   </div>
 </footer>

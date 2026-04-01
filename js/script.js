@@ -1,5 +1,6 @@
 /* ============================================
-   MAGELLANO.AI — JavaScript
+   MAGELLANO.AI — JavaScript v2
+   Ecosistema + Control Tower animations
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
     navLinks.classList.toggle('open');
     const isOpen = navLinks.classList.contains('open');
     hamburger.setAttribute('aria-expanded', isOpen);
-    // Animate hamburger → X
     hamburger.querySelectorAll('span').forEach((s, i) => {
       if (isOpen) {
         if (i === 0) s.style.transform = 'translateY(7px) rotate(45deg)';
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Close menu on link click
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
@@ -46,45 +45,90 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* ---------- TOOL CARD ACCORDION ---------- */
-  document.querySelectorAll('.tool-header').forEach(header => {
-    header.addEventListener('click', function () {
-      const card = this.closest('.tool-card');
-      const isOpen = card.classList.contains('open');
+  /* ---------- CONTROL TOWER — ANIMATED PARTICLES ---------- */
+  const towerHub = document.getElementById('towerHub');
+  if (towerHub) {
+    const hubLines = towerHub.querySelector('.hub-lines');
+    const paths = hubLines.querySelectorAll('.hub-line');
+    const particles = hubLines.querySelectorAll('.data-particle');
 
-      // Close all cards in the same grid
-      const grid = card.closest('.tools-grid');
-      if (grid) {
-        grid.querySelectorAll('.tool-card.open').forEach(c => {
-          if (c !== card) c.classList.remove('open');
-        });
-      }
+    // Animate particles along paths using offset-path or manual animation
+    function animateParticles() {
+      paths.forEach((path, i) => {
+        const particle = particles[i];
+        if (!particle || !path) return;
 
-      // Toggle clicked card
-      card.classList.toggle('open', !isOpen);
+        const length = path.getTotalLength();
+        let progress = 0;
+        const speed = 0.003 + (i * 0.001); // Slightly different speeds
+        const delay = i * 1300;
+
+        function step() {
+          progress += speed;
+          if (progress > 1) progress = 0;
+
+          const point = path.getPointAtLength(progress * length);
+          particle.setAttribute('cx', point.x);
+          particle.setAttribute('cy', point.y);
+
+          // Fade in/out at ends
+          let opacity = 1;
+          if (progress < 0.1) opacity = progress / 0.1;
+          if (progress > 0.9) opacity = (1 - progress) / 0.1;
+          particle.setAttribute('opacity', opacity);
+
+          requestAnimationFrame(step);
+        }
+
+        // Start with delay
+        setTimeout(() => {
+          requestAnimationFrame(step);
+        }, delay);
+      });
+    }
+
+    animateParticles();
+
+    // Hub nodes — click to scroll to area
+    towerHub.querySelectorAll('.hub-node').forEach(node => {
+      node.addEventListener('click', function () {
+        const area = this.dataset.area;
+        const target = document.getElementById('area-' + area);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Highlight the card briefly
+          target.style.borderColor = '#06c7b2';
+          setTimeout(() => { target.style.borderColor = ''; }, 2000);
+        }
+      });
     });
-  });
 
-  /* ---------- AREA TABS ---------- */
-  const tabBtns    = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const target = this.dataset.tab;
-
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabContents.forEach(t => t.classList.remove('active'));
-
-      this.classList.add('active');
-      const content = document.getElementById('tab-' + target);
-      if (content) content.classList.add('active');
+    // Interactive hover: highlight corresponding line
+    towerHub.querySelectorAll('.hub-node').forEach((node, i) => {
+      node.addEventListener('mouseenter', () => {
+        if (paths[i]) {
+          paths[i].style.opacity = '1';
+          paths[i].style.strokeWidth = '2.5';
+        }
+        if (particles[i]) {
+          particles[i].setAttribute('r', '5');
+        }
+      });
+      node.addEventListener('mouseleave', () => {
+        if (paths[i]) {
+          paths[i].style.opacity = '';
+          paths[i].style.strokeWidth = '';
+        }
+        if (particles[i]) {
+          particles[i].setAttribute('r', '3');
+        }
+      });
     });
-  });
+  }
 
   /* ---------- SCROLL FADE-IN ANIMATIONS ---------- */
   const fadeEls = document.querySelectorAll(
-    'section h2, .tool-card, .ecosystem-card, .settore-card, .case-card, .area-header, .section-intro, .section-footnote'
+    'section h2, .pillar, .feature, .area-card, .settore-card, .case-card, .section-intro, .tower-hub'
   );
   fadeEls.forEach(el => el.classList.add('fade-in'));
 
