@@ -340,22 +340,24 @@ section { padding: 100px 0; }
 .tower-hub {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  height: 400px;
-  margin: 64px auto 56px;
+  max-width: 900px;
+  height: 540px;
+  margin: 64px auto 24px;
 }
 
-.hub-center {
-  position: relative;
+#hubCanvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 0;
 }
 
 .hub-core {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 140px;
   height: 140px;
   display: flex;
@@ -401,55 +403,7 @@ section { padding: 100px 0; }
   text-transform: uppercase;
 }
 
-/* SVG connection lines */
-.hub-lines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.hub-line {
-  opacity: 0.5;
-  transition: opacity var(--transition);
-}
-
-/* Data particles traveling along paths */
-.data-particle {
-  opacity: 0;
-}
-
-.data-particle.p1 {
-  animation: particleTravel1 4s ease-in-out infinite;
-}
-.data-particle.p2 {
-  animation: particleTravel2 4s ease-in-out infinite 1.3s;
-}
-.data-particle.p3 {
-  animation: particleTravel3 4s ease-in-out infinite 2.6s;
-}
-
-@keyframes particleTravel1 {
-  0%   { opacity: 0; offset-distance: 0%; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; offset-distance: 100%; }
-}
-@keyframes particleTravel2 {
-  0%   { opacity: 0; offset-distance: 0%; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; offset-distance: 100%; }
-}
-@keyframes particleTravel3 {
-  0%   { opacity: 0; offset-distance: 0%; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; offset-distance: 100%; }
-}
-
-/* Satellite nodes */
+/* Satellite nodes — NO transform on hover (prevents shifting) */
 .hub-node {
   position: absolute;
   display: flex;
@@ -458,9 +412,7 @@ section { padding: 100px 0; }
   gap: 8px;
   z-index: 2;
   cursor: pointer;
-  transition: transform var(--transition);
 }
-.hub-node:hover { transform: scale(1.08); }
 
 .node-dot {
   width: 48px;
@@ -469,7 +421,7 @@ section { padding: 100px 0; }
   background: var(--navy-dark);
   border: 2px solid var(--teal);
   position: relative;
-  transition: box-shadow var(--transition), background var(--transition);
+  transition: box-shadow 0.4s ease;
 }
 .node-dot::after {
   content: '';
@@ -478,12 +430,8 @@ section { padding: 100px 0; }
   border-radius: 50%;
   background: var(--teal);
   opacity: 0.6;
-  transition: opacity var(--transition);
+  transition: opacity 0.4s ease;
 }
-.hub-node:hover .node-dot {
-  box-shadow: 0 0 24px var(--teal-glow);
-}
-.hub-node:hover .node-dot::after { opacity: 1; }
 
 .hub-node span {
   font-size: 0.78rem;
@@ -491,17 +439,86 @@ section { padding: 100px 0; }
   color: var(--text-light);
   text-align: center;
   white-space: nowrap;
+  transition: color 0.4s ease;
 }
 
-.node-lead    { left: 5%;  top: 50%; transform: translateY(-50%); }
-.node-adv     { left: 50%; top: 2%;  transform: translateX(-50%); }
-.node-organic { right: 5%; top: 50%; transform: translateY(-50%); }
-
-/* Hover highlight on node → line */
-.hub-node:hover ~ .hub-lines .hub-line,
-.tower-hub:hover .hub-line {
-  opacity: 0.8;
+/* Magic light glow — follows mouse via JS */
+.tower-hub .magic-light {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6,199,178,0.15) 0%, rgba(6,199,178,0.04) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
+.tower-hub:hover .magic-light {
+  opacity: 1;
+}
+
+/* Area nodes — middle ring, well separated from outer channels */
+.node-lead    { left: 15%;  top: 50%; transform: translateY(-50%); }
+.node-adv     { left: 50%; top: 8%;  transform: translateX(-50%); }
+.node-organic { right: 15%; top: 50%; transform: translateY(-50%); }
+
+/* ---------- CHANNEL LABELS (outer ring) ---------- */
+.ch-label {
+  position: absolute;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--teal);
+  background: rgba(6,199,178,0.06);
+  border: 1px solid rgba(6,199,178,0.15);
+  padding: 4px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+  z-index: 3;
+  opacity: 0.7;
+  transition: opacity var(--transition), background var(--transition);
+}
+.ch-label:hover {
+  opacity: 1;
+  background: rgba(6,199,178,0.18);
+}
+
+/* Legend */
+.hub-legend {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 12px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.legend-out { background: #06c7b2; }
+.legend-in  { background: #f0a030; }
+
+/* Hub flow caption */
+.hub-flow-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--gray);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+/* (circular view removed — hub only) */
+
+/* (circular node styles removed) */
 
 /* Tower features grid */
 .tower-features {
@@ -827,9 +844,11 @@ footer {
   .footer-right  { align-items: flex-start; }
   .footer-nav    { justify-content: flex-start; }
 
-  .tower-hub { height: 350px; }
-  .node-lead    { left: 2%;  }
-  .node-organic { right: 2%; }
+  .tower-hub { height: 440px; }
+  .node-lead    { left: 12%;  }
+  .node-organic { right: 12%; }
+  .ch-label { font-size: 0.58rem; padding: 3px 8px; }
+  .hub-legend { gap: 20px; flex-wrap: wrap; }
 }
 
 @media (max-width: 768px) {
@@ -854,7 +873,8 @@ footer {
 
   .ecosystem-pillars { grid-template-columns: 1fr; }
 
-  .tower-hub { height: 300px; }
+  .tower-hub { height: 380px; }
+  .ch-label { display: none; }
   .hub-core { width: 100px; height: 100px; }
   .hub-icon { width: 60px; height: 60px; }
   .hub-icon svg { width: 28px; height: 28px; }
@@ -878,7 +898,7 @@ footer {
   .settori-grid { grid-template-columns: 1fr; }
   .tower-features { grid-template-columns: 1fr; }
 
-  .tower-hub { height: 260px; }
+  .tower-hub { height: 280px; }
   .node-lead { left: 0; top: 70%; transform: none; }
   .node-adv  { left: 50%; top: 0; }
   .node-organic { right: 0; top: 70%; transform: none; }

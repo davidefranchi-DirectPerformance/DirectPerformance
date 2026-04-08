@@ -72,7 +72,7 @@
     <div class="section-label">L'ecosistema</div>
     <h2>Non un software.<br>Un ecosistema di marketing.</h2>
     <p class="section-intro">
-      Magellano non è un tool. È un sistema integrato che unisce intelligenza artificiale,
+      Magellano non è un software. È un sistema integrato che unisce intelligenza artificiale,
       automazione e dati in un unico ambiente. Tutto si connette, tutto si parla.
       L'AI è lo strumento che Magellano sfrutta per rendere ogni processo più veloce,
       ogni analisi più profonda, ogni decisione più chiara.
@@ -86,7 +86,7 @@
       <div class="pillar">
         <div class="pillar-number">02</div>
         <h4>AI come acceleratore</h4>
-        <p>L'intelligenza artificiale non è il prodotto. È il motore invisibile che alimenta automazione, analisi predittiva e ottimizzazione continua.</p>
+        <p>L'intelligenza artificiale è il motore "invisibile" che alimenta automazione, analisi predittiva e ottimizzazione continua.</p>
       </div>
       <div class="pillar">
         <div class="pillar-number">03</div>
@@ -103,50 +103,68 @@
     <div class="section-label teal">Control Tower</div>
     <h2>Il centro di tutto.</h2>
     <p class="section-intro">
-      La Control Tower è il cuore operativo di Magellano. Da qui governi l'intero ecosistema:
-      monitoraggio in tempo reale, automazione dei processi, gestione centralizzata dei dati
-      e intelligenza artificiale integrata in ogni flusso.
+      La Control Tower è il cuore operativo di Magellano. Da qui si governa l'intero ecosistema:
+      monitoraggio in tempo reale, analisi, gestione centralizzata dei dati
+      grazie all'AI integrata in ogni flusso.
     </p>
 
-    <!-- ANIMATED HUB -->
+    <!-- ======= VERSION 1: HUB & SPOKE WITH CHANNELS (Canvas) ======= -->
     <div class="tower-hub" id="towerHub">
-      <div class="hub-center">
-        <div class="hub-core">
-          <div class="hub-pulse"></div>
-          <div class="hub-pulse delay"></div>
-          <div class="hub-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <path d="M6 38 Q14 10 24 24 Q34 38 42 10" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-              <circle cx="42" cy="10" r="3" fill="#06c7b2"/>
-            </svg>
-          </div>
-          <span class="hub-label">Control Tower</span>
-        </div>
+      <canvas id="hubCanvas"></canvas>
+      <div class="magic-light" id="magicLight"></div>
 
-        <!-- Connection lines (SVG) -->
-        <svg class="hub-lines" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
-          <path class="hub-line line-lead" d="M400,200 Q250,100 120,180" stroke="#06c7b2" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
-          <path class="hub-line line-adv" d="M400,200 Q400,80 400,60" stroke="#06c7b2" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
-          <path class="hub-line line-organic" d="M400,200 Q550,100 680,180" stroke="#06c7b2" stroke-width="1.5" fill="none" stroke-dasharray="6,4"/>
-          <!-- Data particles will be animated via CSS -->
-          <circle class="data-particle p1" cx="0" cy="0" r="3" fill="#06c7b2"/>
-          <circle class="data-particle p2" cx="0" cy="0" r="3" fill="#06c7b2"/>
-          <circle class="data-particle p3" cx="0" cy="0" r="3" fill="#06c7b2"/>
-        </svg>
+      <!-- HTML overlay: core -->
+      <div class="hub-core">
+        <div class="hub-pulse"></div>
+        <div class="hub-pulse delay"></div>
+        <div class="hub-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path d="M6 38 Q14 10 24 24 Q34 38 42 10" stroke="#06c7b2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle cx="42" cy="10" r="3" fill="#06c7b2"/>
+          </svg>
+        </div>
+        <span class="hub-label">Control Tower</span>
+      </div>
 
-        <!-- Satellite nodes -->
-        <div class="hub-node node-lead" data-area="leadgen">
-          <div class="node-dot"></div>
-          <span>Lead Generation</span>
-        </div>
-        <div class="hub-node node-adv" data-area="advertising">
-          <div class="node-dot"></div>
-          <span>Advertising</span>
-        </div>
-        <div class="hub-node node-organic" data-area="organic">
-          <div class="node-dot"></div>
-          <span>Organic Growth</span>
-        </div>
+      <!-- Area nodes (middle ring) -->
+      <div class="hub-node node-lead" data-area="leadgen">
+        <div class="node-dot"></div>
+        <span>Lead Generation</span>
+      </div>
+      <div class="hub-node node-adv" data-area="advertising">
+        <div class="node-dot"></div>
+        <span>Advertising</span>
+      </div>
+      <div class="hub-node node-organic" data-area="organic">
+        <div class="node-dot"></div>
+        <span>Organic Growth</span>
+      </div>
+
+      <!-- Channel labels (outer ring) — positioned far from area nodes -->
+      <!-- Lead Gen channels — far left -->
+      <div class="ch-label ch-lead" style="left:0; top:8%">Social Media</div>
+      <div class="ch-label ch-lead" style="left:0; top:28%">Email Marketing</div>
+      <div class="ch-label ch-lead" style="left:0; top:62%">Retargeting</div>
+      <div class="ch-label ch-lead" style="left:0; top:82%">Landing Pages</div>
+      <!-- Adv channels — far top -->
+      <div class="ch-label ch-adv" style="left:16%; top:0">Social Ads</div>
+      <div class="ch-label ch-adv" style="left:35%; top:0">Connected TV</div>
+      <div class="ch-label ch-adv" style="right:35%; top:0">DOOH</div>
+      <div class="ch-label ch-adv" style="right:16%; top:0">Programmatic</div>
+      <!-- Organic channels — far right -->
+      <div class="ch-label ch-organic" style="right:0; top:8%">SEO On-site</div>
+      <div class="ch-label ch-organic" style="right:0; top:28%">Digital PR</div>
+      <div class="ch-label ch-organic" style="right:0; top:62%">Dati Strutturati</div>
+      <div class="ch-label ch-organic" style="right:0; top:82%">Fonti AI</div>
+    </div>
+
+    <!-- Legend -->
+    <div class="hub-legend">
+      <div class="legend-item">
+        <span class="legend-dot legend-out"></span> Flusso in uscita — strategia e dati verso i canali
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot legend-in"></span> Flusso di ritorno — risultati e insight verso la Control Tower
       </div>
     </div>
 
@@ -157,21 +175,21 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06c7b2" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
         </div>
         <h4>AI integrata</h4>
-        <p>Assistenti intelligenti, analisi predittiva e automazione cognitiva su ogni flusso operativo.</p>
+        <p>Assistenti intelligenti, analisi predittiva e automazione su ogni flusso operativo.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06c7b2" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         </div>
         <h4>Portali specializzati</h4>
-        <p>Interfacce verticalizzate per settore o cliente. Ogni utente vede solo ciò che gli serve.</p>
+        <p>Interfacce verticalizzate per settore o cliente. Un ambiente dedicato al tipo di mercato e offerta.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06c7b2" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <h4>Automazione</h4>
-        <p>Email, messaggistica, trascrizioni, workflow. Meno lavoro manuale, più velocità operativa.</p>
+        <p>Analisi dati, dashboard operative e gestione centralizzata dei flussi. Meno dispersione, più controllo su ogni processo.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">
@@ -215,7 +233,7 @@
           <span>Campaign Management</span>
           <span>Lead Scoring & Validation</span>
           <span>Tracking & Analytics</span>
-          <span>Data Entry Unificato</span>
+          <span>Data Entry Automatico</span>
           <span>Portali Verticali</span>
         </div>
       </div>
@@ -227,7 +245,7 @@
         <div class="area-number">02</div>
         <div class="area-card-titles">
           <h3>Advertising</h3>
-          <p class="area-payoff">Ogni euro investito. Ogni risultato misurato.</p>
+          <p class="area-payoff">Risultato misurato per ogni euro investito.</p>
         </div>
       </div>
       <div class="area-card-body">
@@ -235,13 +253,13 @@
           L'advertising funziona quando i dati guidano le decisioni.<br>
           Magellano segue l'intero percorso dell'utente — dalla prima impression alla conversione —
           consolidando i dati da ogni piattaforma in un'unica fonte di verità.
-          Tracciamento multicanale, attribuzione avanzata e ottimizzazione del budget in tempo reale.
+          Tracciamento multicanale, proxy di attribuzione e ottimizzazione del budget in tempo reale.
           Full funnel, nessun punto cieco.
         </p>
         <div class="area-capabilities">
           <span>Consolidamento Dati Multi-piattaforma</span>
           <span>Tracciamento Full Funnel</span>
-          <span>Attribuzione Avanzata</span>
+          <span>Proxy di Attribuzione</span>
           <span>Ottimizzazione Budget Real-time</span>
         </div>
       </div>
@@ -253,7 +271,7 @@
         <div class="area-number">03</div>
         <div class="area-card-titles">
           <h3>Organic Growth</h3>
-          <p class="area-payoff">Visibilità che dura. Su Google e oltre.</p>
+          <p class="area-payoff">Visibilità che dura. SEO &amp; GEO.</p>
         </div>
       </div>
       <div class="area-card-body">
@@ -268,9 +286,9 @@
         </p>
         <div class="area-capabilities">
           <span>SEO & GEO Strategy</span>
-          <span>Content Analysis</span>
-          <span>Sentiment Geo-localizzato</span>
-          <span>Dashboard Editoriale</span>
+          <span>Digital PR</span>
+          <span>Local SEO</span>
+          <span>Dati Strutturati</span>
           <span>AI Visibility Monitoring</span>
         </div>
       </div>
@@ -294,7 +312,7 @@
         <div class="settore-icon">💼</div>
         <h4>Finance &amp; Insurance</h4>
         <p>Qualifica lead complessi, gestisci compliance e ottimizza ogni campagna di acquisizione
-        in un settore dove ogni contatto conta doppio.</p>
+        in un settore competitivo.</p>
       </div>
 
       <div class="settore-card">
@@ -355,7 +373,7 @@
         <div class="case-tag">Organic Growth · E-commerce</div>
         <h4>"Da invisibili a referenza AI: come un brand ha triplicato la visibilità organica in 6 mesi."</h4>
         <div class="case-tools">
-          <span>Content Analysis</span>
+          <span>Digital PR</span>
           <span>GEO Strategy</span>
         </div>
         <div class="case-logo-placeholder">Logo Cliente</div>
