@@ -14,10 +14,10 @@
    ===================================================================== */
 
 window.GISCUS_CONFIG = {
-  repo:        "TUO-UTENTE/NOME-REPO",
-  repoId:      "REPO_ID_PLACEHOLDER",
+  repo:        "davidefranchi-DirectPerformance/DirectPerformance",
+  repoId:      "R_kgDOQxne1w",
   category:    "General",
-  categoryId:  "CATEGORY_ID_PLACEHOLDER",
+  categoryId:  "DIC_kwDOQxne184C8USj",
   theme:       "light",
   lang:        "it"
 };
