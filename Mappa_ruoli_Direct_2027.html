@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mappa dei ruoli Direct</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+body{margin:0}
+
+/* Layout: organigramma per aree (radice, cinque nodi) e sotto il dettaglio dell'area scelta: attività, responsabile, chi affianca */
+:root {
+  --bg: #F5F6F9; --surface: #FFFFFF; --ink: #121826; --muted: #5A6475; --line: #DCE0E8; --line-strong: #B9C0CD;
+  --a1: #0B3D91; --a2: #3F6FD1; --a3: #1B7F5A; --a4: #A9610A; --a5: #4B5568;
+  --mark: #E8F0FF; --hl: #FFE9A8; --focus: #1D4ED8;
+  --f-display: "Montserrat", "Avenir Next", system-ui, sans-serif;
+  --f-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1218; --surface: #161B23; --ink: #E9ECF2; --muted: #9AA4B5; --line: #29303B; --line-strong: #3C4554;
+    --a1: #7FA6FF; --a2: #8FB0F5; --a3: #5BD1A0; --a4: #F0B15A; --a5: #A9B3C4;
+    --mark: #1C2740; --hl: #5A4A14; --focus: #8FB0FF; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1218; --surface: #161B23; --ink: #E9ECF2; --muted: #9AA4B5; --line: #29303B; --line-strong: #3C4554;
+  --a1: #7FA6FF; --a2: #8FB0F5; --a3: #5BD1A0; --a4: #F0B15A; --a5: #A9B3C4;
+  --mark: #1C2740; --hl: #5A4A14; --focus: #8FB0FF; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 14px; line-height: 1.45;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 56px; }
+.wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(24px, 3.6vw, 34px); line-height: 1.12; font-weight: 700; letter-spacing: -0.01em; }
+p { margin: 0; }
+.head { display: flex; flex-direction: column; gap: 10px; max-width: 72ch; }
+.eyebrow { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.lead { color: var(--muted); font-size: 15px; }
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.tools label { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+select { font: inherit; font-size: 13.5px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); min-width: 200px; }
+select:focus-visible, .node:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.clear { font: inherit; font-size: 13px; color: var(--muted); background: none; border: 0; text-decoration: underline; cursor: pointer; padding: 6px; }
+.clear[hidden] { display: none; }
+
+/* organigramma */
+.root { align-self: center; font-family: var(--f-display); font-weight: 700; font-size: 15px; padding: 10px 22px; border-radius: 999px; background: var(--ink); color: var(--bg); position: relative; }
+.tree { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 22px; padding-top: 18px; }
+.tree::before { content: ""; position: absolute; top: 0; left: 10%; right: 10%; height: 2px; background: var(--line-strong); }
+.rootwrap { display: flex; flex-direction: column; align-items: center; margin-bottom: -22px; }
+.rootwrap::after { content: ""; width: 2px; height: 22px; background: var(--line-strong); }
+.node { position: relative; text-align: left; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--ac); border-radius: 10px; padding: 12px 12px 12px; display: flex; flex-direction: column; gap: 8px; cursor: pointer; min-width: 0; }
+.node::before { content: ""; position: absolute; left: 50%; top: -23px; width: 2px; height: 18px; background: var(--line-strong); }
+.node[aria-pressed="true"] { border-color: var(--ac); box-shadow: 0 0 0 2px var(--ac); background: var(--mark); }
+.node h3 { font-size: 14.5px; line-height: 1.2; font-weight: 700; }
+.node .st { font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--ac); }
+.node .ppl { font-size: 12px; color: var(--muted); }
+.node .cnt { font-size: 12px; font-weight: 600; margin-top: auto; }
+.node .you { font-size: 12px; font-weight: 700; background: var(--hl); color: var(--ink); border-radius: 6px; padding: 2px 7px; align-self: flex-start; }
+.node .you[hidden] { display: none; }
+
+/* dettaglio area */
+.focus { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 18px; border-top: 5px solid var(--ac); }
+.fh { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.fh h2 { font-size: 22px; font-weight: 700; }
+.fh .st { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--ac); }
+.fh p { flex-basis: 100%; color: var(--muted); }
+.people { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.people .lab { font-size: 12px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.grp { display: flex; flex-direction: column; gap: 4px; }
+.grp > h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; margin: 8px 0 2px; }
+.rowh, .row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr); gap: 10px 18px; }
+.rowh { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 0 4px; }
+.row { padding: 11px 0; border-top: 1px solid var(--line); align-items: start; }
+.row .t { font-weight: 600; font-size: 14px; }
+.row .c { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.row .flag { display: inline-block; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--a4); margin-left: 6px; }
+.row.dim { opacity: .35; }
+.row.hit { background: var(--mark); border-radius: 8px; padding-inline: 8px; margin-inline: -8px; }
+.cell { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; align-content: flex-start; }
+.cell[data-l]::before { display: none; content: attr(data-l); width: 100%; font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.chip { font-size: 12.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); }
+.chip small { font-weight: 400; color: var(--muted); }
+.chip.r { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip.r small { color: inherit; opacity: .8; }
+.chip.me { outline: 2px solid var(--focus); outline-offset: 1px; }
+.foot { font-size: 12px; color: var(--muted); max-width: 72ch; }
+
+@media (max-width: 980px) {
+  .tree { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); padding-top: 0; margin-top: 0; }
+  .tree::before, .node::before, .rootwrap::after { display: none; }
+  .rootwrap { margin-bottom: 0; }
+}
+@media (max-width: 720px) {
+  .rowh { display: none; }
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .cell[data-l]::before { display: block; }
+  .cell:empty { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) { .node { transition: box-shadow .12s ease; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">Direct Performance · 2027 · prima proposta</div>
+    <h1>Chi fa cosa, area per area</h1>
+    <p class="lead">Cinque aree, ognuna con le sue attività, il responsabile e chi lo affianca. Scegli un’area per vedere il dettaglio.</p>
+  </header>
+
+  <div class="tools">
+    <label for="who">Evidenzia una persona</label>
+    <select id="who"></select>
+    <button type="button" class="clear" id="clear" hidden>Togli evidenza</button>
+  </div>
+
+  <section aria-label="Le aree">
+    <div class="rootwrap"><div class="root">Direct Performance</div></div>
+    <div class="tree" id="tree"></div>
+  </section>
+
+  <section id="focus" class="focus" aria-live="polite"></section>
+
+  <p class="foot">Le persone indicate con “proposti” o “figura da definire” sono ipotesi da confermare. Lo schema non riporta gli obiettivi 2027 né il budget: seguono la scelta del modello commerciale.</p>
+</div>
+
+<script>
+const AREAS = [
+  { id: "lead", n: "Lead generation", st: "Da confermare", c: "var(--a1)", d: "Contatti qualificati per i clienti, con un call center che li valida e un funnel che li ricontatta." },
+  { id: "aff", n: "Affiliazione", st: "Da confermare", c: "var(--a2)", d: "Un canale a sé, dove la crescita è soprattutto commerciale." },
+  { id: "rete", n: "Rete commerciale e gestione clienti", st: "Da ottimizzare", c: "var(--a3)", d: "Vendere con un metodo più rigoroso e seguire i clienti nel tempo." },
+  { id: "prod", n: "Prodotto e property", st: "Da ottimizzare", c: "var(--a4)", d: "Ogni verticale ha la sua property, con una regia comune su business, contenuti e tecnologia." },
+  { id: "mkt", n: "Marketing", st: "Segue le scelte a monte", c: "var(--a5)", d: "Il marketing dell’agenzia: decisioni di business a monte, realizzazione a valle." }
+];
+/* resp e con: "Nome|ruolo". prop = ipotesi da confermare */
+const ITEMS = [
+  { a: "lead", t: "Lead generation qualificata", c: "Campagne, call center di validazione dei contatti e funnel che segue e ricontatta la lead. La qualità si misura con una metrica condivisa.", r: ["Davide|parte commerciale", "Edoardo|messa a terra e gestione"], w: [] },
+
+  { a: "aff", t: "Crescita del canale", c: "Obiettivi commerciali, sviluppo degli affiliati e premi per chi raggiunge gli obiettivi concordati.", r: ["Jonathan"], w: ["Davide|strategia e obiettivi"] },
+
+  { a: "rete", t: "Metodo commerciale e test", c: "Scheda di raccolta dati e test su 4–5 aziende entro fine anno, per scegliere con dati tra i modelli di vendita.", r: ["Davide"], w: ["Marco M.|test con la rete"] },
+  { a: "rete", t: "Gestione commerciale dei clienti diretti", c: "Vendita e relazione con i clienti diretti nel tempo. Davide fa back office strategico: porta clienti alla rete e aiuta a presentare i progetti, senza gestirli.", r: ["Marco M."], w: ["Davide|back office strategico"] },
+  { a: "rete", t: "Gestione commerciale dei centri media", c: "Vendita e relazione con i centri media. Stesso supporto strategico di Davide; da definire PR ed evento per i centri media.", r: ["Savino"], w: ["Davide|back office strategico"] },
+  { a: "rete", t: "Direzione commerciale dei venditori", c: "Coordinamento della rete commerciale, oggi in capo a Marco M.", r: ["Marco M."], w: [] },
+  { a: "rete", t: "Project management e accounting dei clienti", c: "Una persona dedicata che segue il cliente nel tempo, nel modello con clienti finali.", r: ["Marta", "Gianluca"], w: [], prop: "proposti" },
+  { a: "rete", t: "Contratti e amministrazione commerciale", c: "Redazione e gestione dei contratti, da automatizzare con strumenti AI.", r: ["Ilaria"], w: [] },
+  { a: "rete", t: "Marketing per le vendite", c: "Email, database, premi e incentivi per la rete e i partner.", r: ["Davide|strategia", "Marco A.|messa a terra"], w: ["Marco M.|confronto con la rete", "Savino|confronto con la rete"] },
+
+  { a: "prod", g: "Prodotto e regia", t: "Filtro di business sulle property", c: "Per ogni property: come facciamo soldi? Utenti, struttura e coerenza con il mercato.", r: ["Davide"], w: [] },
+  { a: "prod", g: "Prodotto e regia", t: "Acquisizione di 1–2 property dal mercato", c: "Rafforzare un verticale o aprirne uno nuovo, per esempio il B2B. Servono mandato e budget.", r: ["Davide"], w: [] },
+  { a: "prod", g: "Prodotto e regia", t: "Rilancio di Posta Diretta", c: "Ridefinire il perimetro commerciale, farla funzionare e svilupparla.", r: ["Davide"], w: ["Giorgio|aree tecnologiche"] },
+  { a: "prod", g: "Prodotto e regia", t: "Regia delle property", c: "Tiene insieme business, linee editoriali e tecnologia, e dà un punto comune a chi segue i siti.", r: ["Marco A."], w: ["Davide|filtro di business"] },
+  { a: "prod", g: "Contenuti e siti", t: "Linee editoriali, contenuti, PR", c: "Marketing di prodotto: comunicazione coerente e contenuti che il consumatore trova utili.", r: ["Marco A."], w: ["Erika|parte operativa"] },
+  { a: "prod", g: "Contenuti e siti", t: "Social dei portali: gestione e immagine", c: "Gestione operativa dei social e la persona che parla per Clicca Lavoro, Turista Curioso e gli altri portali consumer.", r: ["Erika"], w: ["Marco A.|linee editoriali"] },
+  { a: "prod", g: "Contenuti e siti", t: "Influencer verticale", c: "Una figura autonoma, specializzata per verticale, che parla dell’agenzia in modo più qualificato.", r: ["Marco A.|gestione operativa", "Erika|gestione operativa"], w: ["Davide|supervisione"], prop: "figura da definire" },
+  { a: "prod", g: "Contenuti e siti", t: "SEO e ADV", c: "Supporto interno alle property, con l’obiettivo di ridurre il costo per lead.", r: ["Alessio"], w: [] },
+  { a: "prod", g: "Contenuti e siti", t: "Chi segue i siti", c: "Ognuno segue i suoi, con un lavoro comune sotto la regia delle property.", r: ["Giorgio", "Flavio", "Marco D.", "Alessio"], w: [] },
+  { a: "prod", g: "Tecnologia", t: "Sviluppo di Magellano", c: "Farlo crescere come strumento interno e come argomento per aprire la conversazione commerciale.", r: ["Giorgio"], w: ["Davide|uso commerciale"] },
+  { a: "prod", g: "Tecnologia", t: "Piattaforma di email marketing", c: "Ottimizzazione già in discussione: da scrivere e mettere a terra con il tech.", r: ["Giorgio"], w: ["Davide|requisiti commerciali"] },
+  { a: "prod", g: "Tecnologia", t: "Follow-up automatico sulle lead", c: "Richiami e nurturing per recuperare valore dalle lead raccolte.", r: ["Giorgio"], w: ["Edoardo|lead generation", "Davide|requisiti commerciali"] },
+
+  { a: "mkt", t: "Scelte di business sul budget", c: "Dove investire: clienti finali, agenzie e partner, affiliazione, centri media, property.", r: ["Davide"], w: [] },
+  { a: "mkt", t: "Messa a terra e declinazione del marketing", c: "Realizza il marketing dentro le scelte di business.", r: ["Marco A."], w: [] },
+  { a: "mkt", t: "Leo Solution e test cold funnel", c: "Call center esterno e test da 3 k€ sul cold funnel.", r: ["Davide"], w: [] },
+  { a: "mkt", t: "Offerte su misura: Business Talk, Life Talk, proposte", c: "Impostazione commerciale delle offerte e messa a terra di contenuti e campagne.", r: ["Davide|impostazione commerciale", "Marco A.|messa a terra"], w: [] },
+  { a: "mkt", t: "Eventi e Academy", c: "Academy, eventi verticali e webinar.", r: ["Elisa"], w: ["Davide|spokesperson"] },
+  { a: "mkt", t: "Intersections e presenza a fiere", c: "L’evento e la presenza della rete commerciale alle fiere.", r: ["Marco A.", "Elisa"], w: [] }
+];
+
+const nm = s => s.split("|")[0], rl = s => s.split("|")[1] || "";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const names = it => [...it.r, ...it.w].map(nm);
+const ALL = [...new Set(ITEMS.flatMap(names))].sort((a, b) => a.localeCompare(b, "it"));
+let area = "lead", who = "";
+
+const selWho = document.getElementById("who");
+selWho.innerHTML = `<option value="">Nessuna</option>` + ALL.map(n => `<option>${esc(n)}</option>`).join("");
+selWho.onchange = () => { who = selWho.value; document.getElementById("clear").hidden = !who; render(); };
+document.getElementById("clear").onclick = () => { selWho.value = ""; selWho.onchange(); };
+
+const chip = (s, kind) => { const n = nm(s), r = rl(s); return `<span class="chip ${kind}${n === who ? " me" : ""}">${esc(n)}${r ? ` <small>· ${esc(r)}</small>` : ""}</span>`; };
+
+function renderTree() {
+  document.getElementById("tree").innerHTML = AREAS.map(a => {
+    const its = ITEMS.filter(i => i.a === a.id), ppl = [...new Set(its.flatMap(names))];
+    const mine = who ? its.filter(i => names(i).includes(who)).length : 0;
+    return `<button type="button" class="node" style="--ac:${a.c}" data-id="${a.id}" aria-pressed="${a.id === area}">
+      <span class="st">${esc(a.st)}</span><h3>${esc(a.n)}</h3>
+      <span class="ppl">${esc(ppl.join(", "))}</span>
+      <span class="cnt">${its.length} ${its.length === 1 ? "attività" : "attività"}</span>
+      <span class="you" ${who && mine ? "" : "hidden"}>${esc(who)}: ${mine}</span></button>`;
+  }).join("");
+  document.querySelectorAll(".node").forEach(b => b.onclick = () => { area = b.dataset.id; render(); });
+}
+function renderFocus() {
+  const a = AREAS.find(x => x.id === area), its = ITEMS.filter(i => i.a === area);
+  const ppl = [...new Set(its.flatMap(names))];
+  const groups = [...new Set(its.map(i => i.g || ""))];
+  let h = `<div class="fh"><h2>${esc(a.n)}</h2><span class="st">${esc(a.st)}</span><p>${esc(a.d)}</p></div>
+    <div class="people"><span class="lab">Chi lavora qui</span>${ppl.map(n => `<span class="chip${n === who ? " me" : ""}">${esc(n)}</span>`).join("")}</div>`;
+  groups.forEach(g => {
+    h += `<div class="grp">${g ? `<h3>${esc(g)}</h3>` : ""}<div class="rowh"><div>Attività</div><div>Responsabile</div><div>Con</div></div>`;
+    its.filter(i => (i.g || "") === g).forEach(i => {
+      const hit = who && names(i).includes(who), dim = who && !hit;
+      h += `<div class="row${hit ? " hit" : ""}${dim ? " dim" : ""}"><div><div class="t">${esc(i.t)}${i.prop ? `<span class="flag">${esc(i.prop)}</span>` : ""}</div><div class="c">${esc(i.c)}</div></div>
+        <div class="cell" data-l="Responsabile">${i.r.map(s => chip(s, "r")).join("")}</div>
+        <div class="cell" data-l="Con">${i.w.map(s => chip(s, "w")).join("")}</div></div>`;
+    });
+    h += `</div>`;
+  });
+  const f = document.getElementById("focus"); f.style.setProperty("--ac", a.c); f.innerHTML = h;
+}
+function render() { renderTree(); renderFocus(); }
+render();
+</script>
+
+</body>
+</html>
